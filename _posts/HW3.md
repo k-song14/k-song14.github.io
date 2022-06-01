@@ -1,0 +1,533 @@
+Hello everyone! Today we will be performing image classification with tensorflow and neural networks! 
+
+
+Let's begin, as always, by loading in our packages and data. We will be using the cats and dogs data.
+
+# §1. Load Packages and Obtain Data
+
+
+```python
+import os
+import tensorflow as tf
+from tensorflow.keras import utils 
+from tensorflow import keras
+```
+
+
+```python
+# location of data
+_URL = 'https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip'
+
+# download the data and extract it
+path_to_zip = utils.get_file('cats_and_dogs.zip', origin=_URL, extract=True)
+
+# construct paths
+PATH = os.path.join(os.path.dirname(path_to_zip), 'cats_and_dogs_filtered')
+
+train_dir = os.path.join(PATH, 'train')
+validation_dir = os.path.join(PATH, 'validation')
+
+# parameters for datasets
+BATCH_SIZE = 32
+IMG_SIZE = (160, 160)
+
+# construct train and validation datasets 
+train_dataset = utils.image_dataset_from_directory(train_dir,
+                                                   shuffle=True,
+                                                   batch_size=BATCH_SIZE,
+                                                   image_size=IMG_SIZE)
+
+validation_dataset = utils.image_dataset_from_directory(validation_dir,
+                                                        shuffle=True,
+                                                        batch_size=BATCH_SIZE,
+                                                        image_size=IMG_SIZE)
+
+# construct the test dataset by taking every 5th observation out of the validation dataset
+val_batches = tf.data.experimental.cardinality(validation_dataset)
+test_dataset = validation_dataset.take(val_batches // 5)
+validation_dataset = validation_dataset.skip(val_batches // 5)
+```
+
+    Downloading data from https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip
+    68608000/68606236 [==============================] - 1s 0us/step
+    68616192/68606236 [==============================] - 1s 0us/step
+    Found 2000 files belonging to 2 classes.
+    Found 1000 files belonging to 2 classes.
+
+
+
+```python
+# technical code related to rapidly repeating data 
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_dataset = train_dataset.prefetch(buffer_size=AUTOTUNE)
+validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
+test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
+```
+
+Now that we have our data, let's visualize it! We'll be printing out some images and their corresponding labels.
+
+### Working with Datasets
+
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+class_names = ['cat','dog']
+
+plt.figure(figsize=(10, 10))
+for images, labels in train_dataset.take(1):
+  for i in range(6):
+    ax = plt.subplot(2, 3, i+1)
+    plt.imshow(images[i].numpy().astype("uint8"))
+    plt.title(class_names[labels[i]])
+    plt.axis("off")
+```
+
+
+    
+![png](output_7_0.png)
+    
+
+
+Now let's try this, but have the top row be dogs and the bottom row be cats.
+
+
+```python
+for images, labels in train_dataset.take(1):
+  for i in range(32):
+    if labels[i] == 1:
+      for j in range(3):
+        ax = plt.subplot(2,3,j+1)
+        ax.imshow(images[i].numpy().astype("uint8"))
+        plt.title(class_names[labels[i]])
+        plt.axis("off")
+    else:
+      for k in range(3,6):
+        ax = plt.subplot(2,3,k+1)
+        ax.imshow(images[i].numpy().astype("uint8"))
+        plt.title(class_names[labels[i]])
+        plt.axis("off")
+```
+
+    /usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:5: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+      """
+    /usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:11: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+      # This is added back by InteractiveShellApp.init_path()
+
+
+
+    
+![png](output_9_1.png)
+    
+
+
+### Check Label Frequencies
+
+Now, we will be checking the label frequencies.
+
+
+```python
+labels_iterator= train_dataset.unbatch().map(lambda image, label: label).as_numpy_iterator()
+```
+
+
+```python
+dogs = [i for i in labels_iterator if i == 1]
+len(dogs)
+```
+
+
+
+
+    1000
+
+
+
+
+```python
+labels_iterator= train_dataset.unbatch().map(lambda image, label: label).as_numpy_iterator()
+cats = [i for i in labels_iterator if i == 0]
+len(cats)
+```
+
+
+
+
+    1000
+
+
+
+As we can see, there is an even number of cats and dogs; there are 1000 cats and 1000 dogs in the dataset. Since there isn't a most 'frequent' label, our baseline model would probably would be accurare about 50% of the time.
+
+Let's move onto training out first model and see if it can perform better than the baseline model.
+
+# §2. First Model
+
+We will be building our sequential keras model. We want our first model to score at least 52% and we want specific layers for each model. 
+
+In each model, we will include at least two Conv2D layers, at least two MaxPooling2D layers, at least one Flatten layer, at least one Dense layer, and at least one Dropout layer. 
+
+Let's try out some different layers and activation functions and see how they do!
+
+
+```python
+model1 = keras.models.Sequential([
+    keras.layers.Reshape((160, 160, 3), input_shape = (160,160,3)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'relu'),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'sigmoid'),
+    keras.layers.Flatten(),
+    keras.layers.Dense(units = 30, activation = 'sigmoid'),
+    keras.layers.Dense(units = 10, activation = 'softmax'),
+    keras.layers.Dropout(0.2)
+])
+
+model1.summary()
+```
+
+    Model: "sequential_61"
+    _________________________________________________________________
+     Layer (type)                Output Shape              Param #   
+    =================================================================
+     reshape_32 (Reshape)        (None, 160, 160, 3)       0         
+                                                                     
+     conv2d_59 (Conv2D)          (None, 158, 158, 2)       56        
+                                                                     
+     max_pooling2d_37 (MaxPoolin  (None, 79, 79, 2)        0         
+     g2D)                                                            
+                                                                     
+     max_pooling2d_38 (MaxPoolin  (None, 39, 39, 2)        0         
+     g2D)                                                            
+                                                                     
+     conv2d_60 (Conv2D)          (None, 37, 37, 2)         38        
+                                                                     
+     flatten_33 (Flatten)        (None, 2738)              0         
+                                                                     
+     dense_56 (Dense)            (None, 30)                82170     
+                                                                     
+     dense_57 (Dense)            (None, 10)                310       
+                                                                     
+     dropout_24 (Dropout)        (None, 10)                0         
+                                                                     
+    =================================================================
+    Total params: 82,574
+    Trainable params: 82,574
+    Non-trainable params: 0
+    _________________________________________________________________
+
+
+
+```python
+model1.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+              metrics=['accuracy'])
+```
+
+
+```python
+history = model1.fit(train_dataset, 
+                     epochs=20, 
+                     validation_data=validation_dataset)
+```
+
+    Epoch 1/20
+    63/63 [==============================] - 56s 351ms/step - loss: 4.0805 - accuracy: 0.3510 - val_loss: 0.8064 - val_accuracy: 0.5111
+    Epoch 2/20
+    63/63 [==============================] - 22s 347ms/step - loss: 3.5306 - accuracy: 0.4965 - val_loss: 0.7336 - val_accuracy: 0.5446
+    Epoch 3/20
+    63/63 [==============================] - 22s 348ms/step - loss: 3.5703 - accuracy: 0.5110 - val_loss: 0.6957 - val_accuracy: 0.5903
+    Epoch 4/20
+    63/63 [==============================] - 22s 345ms/step - loss: 3.4828 - accuracy: 0.5310 - val_loss: 0.6828 - val_accuracy: 0.5817
+    Epoch 5/20
+    63/63 [==============================] - 22s 345ms/step - loss: 3.7155 - accuracy: 0.5290 - val_loss: 0.6755 - val_accuracy: 0.5903
+    Epoch 6/20
+    63/63 [==============================] - 22s 347ms/step - loss: 3.2133 - accuracy: 0.5590 - val_loss: 0.6738 - val_accuracy: 0.5780
+    Epoch 7/20
+    63/63 [==============================] - 22s 344ms/step - loss: 3.3103 - accuracy: 0.5670 - val_loss: 0.6935 - val_accuracy: 0.5186
+    Epoch 8/20
+    63/63 [==============================] - 22s 344ms/step - loss: 3.3991 - accuracy: 0.5630 - val_loss: 0.6719 - val_accuracy: 0.5891
+    Epoch 9/20
+    63/63 [==============================] - 22s 345ms/step - loss: 3.2544 - accuracy: 0.5860 - val_loss: 0.6633 - val_accuracy: 0.6151
+    Epoch 10/20
+    63/63 [==============================] - 22s 345ms/step - loss: 3.3427 - accuracy: 0.5845 - val_loss: 0.6748 - val_accuracy: 0.6015
+    Epoch 11/20
+    63/63 [==============================] - 22s 344ms/step - loss: 3.2039 - accuracy: 0.6125 - val_loss: 0.7079 - val_accuracy: 0.5755
+    Epoch 12/20
+    63/63 [==============================] - 22s 345ms/step - loss: 2.7273 - accuracy: 0.6470 - val_loss: 0.7115 - val_accuracy: 0.5879
+    Epoch 13/20
+    63/63 [==============================] - 22s 348ms/step - loss: 3.0902 - accuracy: 0.6275 - val_loss: 0.6771 - val_accuracy: 0.6077
+    Epoch 14/20
+    63/63 [==============================] - 22s 343ms/step - loss: 3.1241 - accuracy: 0.6240 - val_loss: 0.6799 - val_accuracy: 0.6139
+    Epoch 15/20
+    63/63 [==============================] - 22s 342ms/step - loss: 3.0486 - accuracy: 0.6395 - val_loss: 0.6884 - val_accuracy: 0.6126
+    Epoch 16/20
+    63/63 [==============================] - 22s 347ms/step - loss: 3.2440 - accuracy: 0.6325 - val_loss: 0.7251 - val_accuracy: 0.5891
+    Epoch 17/20
+    63/63 [==============================] - 22s 346ms/step - loss: 2.7761 - accuracy: 0.6370 - val_loss: 0.7013 - val_accuracy: 0.5965
+    Epoch 18/20
+    63/63 [==============================] - 22s 344ms/step - loss: 2.7843 - accuracy: 0.6675 - val_loss: 0.7336 - val_accuracy: 0.5903
+    Epoch 19/20
+    63/63 [==============================] - 22s 346ms/step - loss: 2.9272 - accuracy: 0.6670 - val_loss: 0.7605 - val_accuracy: 0.6101
+    Epoch 20/20
+    63/63 [==============================] - 22s 348ms/step - loss: 2.7726 - accuracy: 0.6475 - val_loss: 0.7702 - val_accuracy: 0.5879
+
+
+**We achieved a final validation accuracy of 58.8%, so we were able to achieve our goal of having a validation accuracy of at least 52%!**
+
+The accuracy of my model stabilized between 59%-61%.
+
+The training and validation accuracy tended to stay around the same for the most part, so, as a result, I would say the model is not overfitted.
+
+As a side note, I noticed that adding Dense layers with different activation functions seemed to help a lot with improving my accuracy!
+
+Now that we've built our first model, let's add some data augmentation layers!
+
+# §3. Model with Data Augmentation
+
+According to my PIC 16B HW 3 assignment page, 'Data augmentation refers to the practice of including modified copies of the same image in the training set. ' We will be including both a tf.keras.layers.RandomFlip() layer and tf.keras.layers.RandomRotation(), so let's explore these layers real quick! We will select a random image and apply different augmentations to it.
+
+
+```python
+data_aug = tf.keras.Sequential([tf.keras.layers.RandomFlip("horizontal_and_vertical"),
+                                tf.keras.Sequential(tf.keras.layers.RandomRotation(0.5))])
+
+#apply randomflip and randomrotation to our data to use in model                                
+aug_ds = train_dataset.map(lambda x, y: (data_aug(x, training=True), y))
+```
+
+After we've applied the augmentations to our training data, we will now build our new model and fit it to our augmented data.
+
+
+```python
+model2 =  keras.models.Sequential([  
+    keras.layers.Reshape((160, 160, 3), input_shape = (160,160,3)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'relu'),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Dense(units = 10, activation = 'selu'),
+    keras.layers.Conv2D(2, (3, 3), activation = 'swish'),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Flatten(),
+    keras.layers.Dense(units = 30, activation = 'softmax'),
+    keras.layers.Dropout(0.2)
+    ])
+```
+
+
+```python
+model2.summary()
+```
+
+    Model: "sequential_73"
+    _________________________________________________________________
+     Layer (type)                Output Shape              Param #   
+    =================================================================
+     reshape_44 (Reshape)        (None, 160, 160, 3)       0         
+                                                                     
+     conv2d_83 (Conv2D)          (None, 158, 158, 2)       56        
+                                                                     
+     max_pooling2d_61 (MaxPoolin  (None, 79, 79, 2)        0         
+     g2D)                                                            
+                                                                     
+     dense_81 (Dense)            (None, 79, 79, 10)        30        
+                                                                     
+     conv2d_84 (Conv2D)          (None, 77, 77, 2)         182       
+                                                                     
+     max_pooling2d_62 (MaxPoolin  (None, 38, 38, 2)        0         
+     g2D)                                                            
+                                                                     
+     flatten_46 (Flatten)        (None, 2888)              0         
+                                                                     
+     dense_82 (Dense)            (None, 30)                86670     
+                                                                     
+     dropout_39 (Dropout)        (None, 30)                0         
+                                                                     
+    =================================================================
+    Total params: 86,938
+    Trainable params: 86,938
+    Non-trainable params: 0
+    _________________________________________________________________
+
+
+
+```python
+model2.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+              metrics=['accuracy'])
+```
+
+
+```python
+history = model2.fit(aug_ds, 
+                     epochs=20, 
+                     validation_data=validation_dataset)
+```
+
+    Epoch 1/20
+    63/63 [==============================] - 37s 571ms/step - loss: 4.0665 - accuracy: 0.4565 - val_loss: 1.3875 - val_accuracy: 0.4975
+    Epoch 2/20
+    63/63 [==============================] - 37s 576ms/step - loss: 3.1137 - accuracy: 0.4885 - val_loss: 0.9923 - val_accuracy: 0.5124
+    Epoch 3/20
+    63/63 [==============================] - 36s 572ms/step - loss: 3.2169 - accuracy: 0.4855 - val_loss: 0.8326 - val_accuracy: 0.5223
+    Epoch 4/20
+    63/63 [==============================] - 36s 572ms/step - loss: 2.8845 - accuracy: 0.5090 - val_loss: 0.8369 - val_accuracy: 0.5000
+    Epoch 5/20
+    63/63 [==============================] - 36s 572ms/step - loss: 3.1802 - accuracy: 0.4850 - val_loss: 0.7982 - val_accuracy: 0.4814
+    Epoch 6/20
+    63/63 [==============================] - 36s 571ms/step - loss: 3.0757 - accuracy: 0.4920 - val_loss: 0.7447 - val_accuracy: 0.4975
+    Epoch 7/20
+    63/63 [==============================] - 36s 566ms/step - loss: 3.0972 - accuracy: 0.4870 - val_loss: 0.7102 - val_accuracy: 0.5495
+    Epoch 8/20
+    63/63 [==============================] - 36s 565ms/step - loss: 3.1207 - accuracy: 0.4965 - val_loss: 0.7423 - val_accuracy: 0.5037
+    Epoch 9/20
+    63/63 [==============================] - 36s 571ms/step - loss: 3.3065 - accuracy: 0.4955 - val_loss: 0.7693 - val_accuracy: 0.5359
+    Epoch 10/20
+    63/63 [==============================] - 36s 569ms/step - loss: 2.9818 - accuracy: 0.5040 - val_loss: 0.7053 - val_accuracy: 0.5557
+    Epoch 11/20
+    63/63 [==============================] - 36s 569ms/step - loss: 2.9897 - accuracy: 0.5025 - val_loss: 0.7083 - val_accuracy: 0.5545
+    Epoch 12/20
+    63/63 [==============================] - 36s 566ms/step - loss: 2.9472 - accuracy: 0.5065 - val_loss: 0.7340 - val_accuracy: 0.5644
+    Epoch 13/20
+    63/63 [==============================] - 36s 567ms/step - loss: 2.7782 - accuracy: 0.5010 - val_loss: 0.6820 - val_accuracy: 0.5928
+    Epoch 14/20
+    63/63 [==============================] - 36s 568ms/step - loss: 2.9999 - accuracy: 0.5055 - val_loss: 0.8921 - val_accuracy: 0.4901
+    Epoch 15/20
+    63/63 [==============================] - 36s 566ms/step - loss: 3.1549 - accuracy: 0.5015 - val_loss: 0.7174 - val_accuracy: 0.5891
+    Epoch 16/20
+    63/63 [==============================] - 36s 564ms/step - loss: 3.0802 - accuracy: 0.5240 - val_loss: 0.7708 - val_accuracy: 0.5644
+    Epoch 17/20
+    63/63 [==============================] - 36s 571ms/step - loss: 3.0256 - accuracy: 0.5115 - val_loss: 0.7822 - val_accuracy: 0.5619
+    Epoch 18/20
+    63/63 [==============================] - 36s 571ms/step - loss: 3.1117 - accuracy: 0.4975 - val_loss: 0.6884 - val_accuracy: 0.5903
+    Epoch 19/20
+    63/63 [==============================] - 36s 571ms/step - loss: 3.0779 - accuracy: 0.5225 - val_loss: 0.7097 - val_accuracy: 0.5705
+    Epoch 20/20
+    63/63 [==============================] - 36s 569ms/step - loss: 3.1397 - accuracy: 0.5150 - val_loss: 0.7048 - val_accuracy: 0.5804
+
+
+**We achieved a final validation accuracy of 58.04%, with our highest validation accuracy being 59.28%, which means we reached our goal of obtaining at least a 55% accuracy rate!**
+
+The accuracy of my model stabilized between 53%-57%.
+
+This model performed around the same as our first model.
+
+The training and validation accuracy tended to stay around the same throughout, so, as a result, I would say the model is not overfitted.
+
+# §4. Data Preprocessing
+
+
+```python
+i = tf.keras.Input(shape=(160, 160, 3))
+x = tf.keras.applications.mobilenet_v2.preprocess_input(i)
+preprocessor = tf.keras.Model(inputs = [i], outputs = [x])
+```
+
+
+```python
+model3 = keras.models.Sequential([
+    preprocessor,
+    keras.layers.Reshape((160, 160, 3), input_shape = (160,160,3)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'selu'),
+    keras.layers.Dropout(0.2)
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Dense(units = 10, activation = 'swish'),
+    keras.layers.Conv2D(2, (3, 3), activation = 'swish'),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Flatten(),
+    #keras.layers.Dense(units = 30, activation = 'softsign'),
+])
+
+model3.summary()
+```
+
+
+```python
+model3.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+              metrics=['accuracy'])
+```
+
+
+```python
+history = model3.fit(aug_ds, 
+                     epochs=10, 
+                     validation_data=validation_dataset)
+```
+
+    Epoch 1/10
+
+
+
+    ---------------------------------------------------------------------------
+
+    KeyboardInterrupt                         Traceback (most recent call last)
+
+    /usr/local/lib/python3.7/dist-packages/zmq/backend/cython/checkrc.pxd in zmq.backend.cython.checkrc._check_rc()
+
+
+    KeyboardInterrupt: 
+
+
+    Exception ignored in: 'zmq.backend.cython.message.Frame.__dealloc__'
+    Traceback (most recent call last):
+      File "zmq/backend/cython/checkrc.pxd", line 13, in zmq.backend.cython.checkrc._check_rc
+    KeyboardInterrupt
+
+
+# §5. Transfer Learning
+
+
+```python
+IMG_SHAPE = IMG_SIZE + (3,)
+base_model = tf.keras.applications.MobileNetV2(input_shape=IMG_SHAPE,
+                                               include_top=False,
+                                               weights='imagenet')
+base_model.trainable = False
+
+i = tf.keras.Input(shape=IMG_SHAPE)
+x = base_model(i, training = False)
+base_model_layer = tf.keras.Model(inputs = [i], outputs = [x])
+```
+
+
+```python
+model4 = keras.models.Sequential([
+    base_model_layer,
+    preprocessor,
+    keras.layers.Reshape((160, 160, 3), input_shape = (160,160,3)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'relu'),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.MaxPooling2D((2,2)),
+    keras.layers.Conv2D(2, (3, 3), activation = 'sigmoid'),
+    keras.layers.Flatten(),
+    keras.layers.Dense(units = 30, activation = 'sigmoid'),
+    keras.layers.Dense(units = 10, activation = 'softmax'),
+    keras.layers.Dropout(0.2)
+])
+
+model4.summary()
+```
+
+
+```python
+model4.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+              metrics=['accuracy'])
+```
+
+
+```python
+history = model4.fit(aug_ds, 
+                     epochs=20, 
+                     validation_data=validation_dataset)
+```
+
+# §6. Score on Test Data
+
+
+```python
+model.evaluate(test_dataset)
+```
