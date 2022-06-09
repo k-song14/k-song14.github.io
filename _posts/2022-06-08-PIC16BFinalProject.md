@@ -8,7 +8,7 @@ authors: Kelly Song, Abhi Vemulapti and Chloe Florit
 
 Today's post will be about demonstrating how to use our Lyric Generator, as well as our building process!
 
-If you'd like to follow along, our code is available in our <a href=https://github.com/k-song14/lyric_generator><u>Github repository</u>!</a>
+If you'd like to follow along, our code is available in our <a href=https://github.com/k-song14/lyric_generator>Github repository</a>!
 
 We will go through each major portion: web scraping, implementing our Markov model, and integrating web scraping and our model with Flask.
 
@@ -16,7 +16,7 @@ We will go through each major portion: web scraping, implementing our Markov mod
 
 In order to be able to generate random lyrics, we need to start with a dataset of lyrics. For this project, we wanted the user to be able to input artists of their choice and generate a song based on those artists' songs. We decided to use a Scrapy spider to scrape the Genius website for lyrics. 
 
-In order to do this, we first created a Scrapy spider (see <a href=https://k-song14.github.io/HW2><u>here</u></a> for a tutorial on how to do this). Let's now go step-by-step on our scraping process:
+In order to do this, we first created a Scrapy spider (see <a href=https://k-song14.github.io/HW2>here</a> for a tutorial on how to do this). Let's now go step-by-step on our scraping process:
 
 #### Importing Packages
 
