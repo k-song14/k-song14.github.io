@@ -8,7 +8,7 @@ authors: Kelly Song, Abhi Vemulapti and Chloe Florit
 
 Today's post will be about demonstrating how to use our Lyric Generator, as well as our building process!
 
-If you'd like to follow along, our code is available in our <a href=https://github.com/k-song14/lyric_generator>Github repository</a>!
+If you'd like to follow along, our code is available in our Github repository: https://github.com/k-song14/lyric_generator!
 
 We will go through each major portion: web scraping, implementing our Markov model, and integrating web scraping and our model with Flask.
 
