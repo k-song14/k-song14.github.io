@@ -629,4 +629,4 @@ Let's look at some examples. For our first example, we just used Taylor Swift, a
 
 Now that we have our web app up and running, we can move onto designing the website using HTML and CSS! For our webapp, we used two different style sheets: one provided by w3.css (so we can just call on the different classes) and mystyle.css, which we used to fix spacing, font, and color. Our idea was to have our web app resemble the Genius website.
 
-
+![lyricgif](/images/ezgif.com-video-to-gif.gif)
