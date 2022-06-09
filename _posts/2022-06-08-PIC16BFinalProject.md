@@ -143,7 +143,7 @@ Finally, we get to scrape our song lyrics. We're able to do so with simple CSS s
 
 ```
 
-Here is an example of what the scraped lyrics look like. For this specific demonstration, we scraped the lyrics for The Weeknd and exported it as a csv file (using scrapy crawl lyrics_spider -o lyrics.csv in the terminal), before reading it in as a pandas dataframe (for our webapp, it will be a JSON file and the terminal will not be needed):
+Here is an example of what the scraped lyrics look like. For this specific demonstration, we scraped the lyrics for The Weeknd and Drake and exported it as a csv file (using scrapy crawl lyrics_spider -o lyrics.csv in the terminal), before reading it in as a pandas dataframe (for our webapp, it will be a JSON file and the terminal will not be needed):
 
 ```python
 import pandas as pd
