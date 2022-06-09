@@ -387,7 +387,11 @@ transition_dist_plot('you know ').show()
 ```
 
 <div class = "display">
-{% include transition_dist_i.html %}
+{% include transition1.html %}
+</div>
+
+<div class = "display">
+{% include transition2.html %}
 </div>
 
 Finally, let us run the code on the example dataset with lyrics from Taylor Swift.
