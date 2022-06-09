@@ -615,8 +615,8 @@ And our webapp should work after running it in the terminal! Here are some examp
 
 #### Example 1: Taylor Swift
 
-![tswift1.png](/images/tswift1.png)
-![tswift2.png](/images/tswift2.png)
+![tswift1.jpeg](/images/tswift1.jpeg)
+![tswift2.jpeg](/images/tswift2.jpeg)
 
 ### Example 2: Taylor Swift, Katy Perry, Dua Lipa
 
