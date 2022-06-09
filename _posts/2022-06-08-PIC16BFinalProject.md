@@ -458,9 +458,9 @@ print(generate_song(lyrics_input, n=10))
     
  Now that we have our model and our data, our last step is to integrate them into a webapp.
  
- ## Flask WebApp
+## Flask WebApp
  
- ### Integrating Scrapy and our Markov Model
+### Integrating Scrapy and our Markov Model
  
 We created a web app using flask. The first page of our web app is home page containing an "about" section, "lyric generator" section where the user input artist names, and a "bio" section with creator photos. First we scraped lyrics from flask based on the user's input. This outputs a json file, which we will run through our markov model in flask. The markov model generates lyrics which we will print on the "scrape" page of our web app. 
 
