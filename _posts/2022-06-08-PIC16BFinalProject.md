@@ -641,6 +641,8 @@ Here are some gifs showcasing our website and its features, as well as the song 
 
 ## Conclusion
 
+We're very happy with how our web app and song generator works. The only improvements we've discussed is deploying the web app to heroku (which we attempted but kept running into issues) so that anyone can access the webapp, and improving the wait time when generating our lyrics.
+
 We really enjoyed this project and getting the chance to be creative with it! The skills we learned in class, specifically Scrapy and Flask, helped out a lot and it was great being able to apply concepts and skills we learned in class.
 
 Thank you so much for reading!
