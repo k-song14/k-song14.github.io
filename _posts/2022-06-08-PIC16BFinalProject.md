@@ -633,6 +633,7 @@ Here are some gifs showcasing our website and its features, as well as the song 
 
 ##### Website Features
 ![lyricgif](/images/ezgif.com-video-to-gif.gif)
+![lyricgif](/images/ezgif.com-video-to-gif-3.gif)
 
 #### Generated Song
 ![lyricgif2](/images/ezgif.com-video-to-gif-2.gif)
