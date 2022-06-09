@@ -611,7 +611,9 @@ if __name__== "__main__":
     app.run(debug=True)
 ```
 
-And our webapp should work after running it in the terminal! Here are some examples:
+And our webapp should work after running it in the terminal! 
+
+Let's look at some examples. For our first example, we just used Taylor Swift, and for our second, we used Taylor Swift, Katy Perry and Dua Lipa (aka redeeming ourselves from our presentation after we readded the code we accidentally deleted): 
 
 #### Example 1: Taylor Swift
 
