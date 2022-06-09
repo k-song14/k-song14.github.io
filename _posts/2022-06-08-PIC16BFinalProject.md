@@ -632,6 +632,6 @@ Now that we have our web app up and running, we can move onto designing the webs
 Here are some gifs showcasing our website and its features, as well as the song generator!
 
 ![lyricgif](/images/ezgif.com-video-to-gif.gif)
-
+![lyricgif2](/images/ezgif.com-video-to-gif-2.gif)
 
 Thank you so much for reading!
