@@ -16,7 +16,7 @@ We will go through each major portion: web scraping, implementing our Markov mod
 
 In order to be able to generate random lyrics, we need to start with a dataset of lyrics. For this project, we wanted the user to be able to input artists of their choice and generate a song based on those artists' songs. We decided to use a Scrapy spider to scrape the Genius website for lyrics. 
 
-In order to do this, we first created a Scrapy spider (see <a href=https://k-song14.github.io/HW2>here</a> for a tutorial on how to do this). Let's now go step-by-step on our scraping process:
+In order to do this, we first created a Scrapy spider (see https://k-song14.github.io/HW2 for a tutorial on how to do this). Let's now go step-by-step on our scraping process:
 
 #### Importing Packages
 
