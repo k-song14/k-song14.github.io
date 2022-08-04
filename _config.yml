@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: Kelly's Python Journey
+name: Kelly's Website
 
 # Short bio or description (displayed in the header)
 description: I'm excited to learn more!
@@ -21,7 +21,7 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: HarlinLee/HarlinLee.github.io # replace with your repo
+  github: k-song14/k-song14.github.io # replace with your repo
   instagram:
   linkedin:
   pinterest:
