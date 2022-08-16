@@ -7,8 +7,6 @@ Hello I am Kelly Song. I'm a Statistics major at UCLA and I'm entering my fourth
 
 ## More information
 
-![](/images/kellysong.png){:height="300px"}
-
 ### Contact me
 
 [ksong14@g.ucla.edu](mailto:ksong14@g.ucla.edu)
