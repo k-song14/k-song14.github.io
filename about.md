@@ -7,8 +7,6 @@ Hello I am Kelly Song. I'm a Statistics major at UCLA and I'm entering my fourth
 
 ## More information
 
-My favorite food is fried chicken (preferably vegetarian options). I like learning how to code!
-
 ![](/images/kellysong.png){:height="300px"}
 
 ### Contact me
