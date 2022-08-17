@@ -1311,7 +1311,7 @@ len(returner_list)
 
 
 
-There are about 13 returning members from the previous 3 years, with 3 ambassadors being present for all 3 years.
+There are about 13 returning members from the previous 3 years, with 2 ambassadors being present for all 3 years and 11 being present for two years.
 
 ### Survey Results
 
