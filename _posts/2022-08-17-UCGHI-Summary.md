@@ -851,7 +851,7 @@ Moving on, for the next figure, we'll be accounting for the student population o
 
 We will be using the enroll dataframe as well as the demographics dataframe to calculate the proportions.
 
-***Note***: *the enroll dataframe has enrollment data from all the UCs except UC Hastings, and it does not have the enrollment data from Charles Drew. Therefore, we'll just be looking at these UCs.*
+***Note***: *the enroll dataframe has enrollment data from all the UCs except UC Hastings, and it does not have the enrollment data from Charles Drew. Therefore, we'll just be looking at these UCs. However, since the average student population at UC Hastings and Charles Drew University is less than 1000, they would likely have the largest proportions.*
 
 
 ```python
