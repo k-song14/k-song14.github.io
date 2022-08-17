@@ -1230,30 +1230,6 @@ df3['Degree'][df3['Degree'] == "Graduate "] = "Graduate"
 df3['Degree'].unique()
 ```
 
-    /Users/kellysong/opt/anaconda3/envs/PIC16B/lib/python3.7/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning:
-    
-    
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-    
-    /Users/kellysong/opt/anaconda3/envs/PIC16B/lib/python3.7/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning:
-    
-    
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-    
-    /Users/kellysong/opt/anaconda3/envs/PIC16B/lib/python3.7/site-packages/ipykernel_launcher.py:3: SettingWithCopyWarning:
-    
-    
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-    
-
-
-
 
 
     array(['Graduate', 'Undergraduate', nan, 'MD', 'PhD', 'JD'], dtype=object)
