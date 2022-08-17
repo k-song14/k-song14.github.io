@@ -28,22 +28,6 @@ df = pd.read_csv("2019-2022 Ambassador Demographics - Sheet1.csv")
 df.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -106,7 +90,6 @@ df.head()
   </tbody>
 </table>
 </div>
-
 
 
 Get dataframe with campus coordinates
