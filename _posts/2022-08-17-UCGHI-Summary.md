@@ -859,19 +859,6 @@ enroll.head()
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -916,7 +903,6 @@ enroll.head()
 </table>
 </div>
 
-
 Let's see which campuses have the largest/smallest overall student population.
 
 
@@ -951,19 +937,6 @@ prop.head()
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1008,8 +981,6 @@ prop.head()
 </table>
 </div>
 
-
-
 We'll change the years in enroll to match those in df3.
 
 
@@ -1048,23 +1019,7 @@ for i in df3['Year'].unique():
 prop.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1109,9 +1064,6 @@ prop.head()
 </table>
 </div>
 
-
-
-
 ```python
 fig = px.histogram(prop, 
                    x="Campus", 
@@ -1149,19 +1101,6 @@ count.head()
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1205,7 +1144,6 @@ count.head()
   </tbody>
 </table>
 </div>
-
 
 ```python
 fig = px.histogram(count,
