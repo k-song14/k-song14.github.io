@@ -1194,9 +1194,8 @@ https://ucghi.universityofcalifornia.edu/get-involved/ucghi-student-ambassador-p
 https://www.universityofcalifornia.edu/about-us/information-center/fall-enrollment-glance 
 
 ***Campus Coordinates:***
-https://www.google.com/
+https://www.google.com
 
 
-```python
-
-```
+**Link to slides:**
+https://docs.google.com/presentation/d/1nX_3GqWHz-3xfUui9WDKPX_qctJ5IM3yGVXae5Eg_a0/edit?usp=sharing
