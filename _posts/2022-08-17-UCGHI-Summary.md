@@ -4,7 +4,9 @@ title:  "UCGHI Summary Report 2019-2022"
 author: Kelly Song
 ---
 
-**Hello everyone!**
+## Introduction
+
+**Hello Everyone!**
 
 Today we'll be going over the UCGHI Student Ambassador Summary Report for the 2019-2022 cohorts. 
 
