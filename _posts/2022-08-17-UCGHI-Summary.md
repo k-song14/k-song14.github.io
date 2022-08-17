@@ -4,10 +4,13 @@ title:  "UCGHI Summary Report 2019-2022"
 author: Kelly Song
 ---
 
+**Hello everyone!**
+
+Today we'll be going over the UCGHI Student Ambassador Summary Report for the 2019-2022 cohorts. 
+
 ## Import Dataframes 
 
-We begin by importing 
-
+We begin by importing the necessary csv files.
 
 ```python
 # import pandas for dataframe
