@@ -4,7 +4,9 @@ title: "Generating Lyrics with Genius Lyrics"
 authors: Kelly Song, Abhi Vemulapti and Chloe Florit
 ---
 
-**Hello everyone!**
+## Introduction
+
+**Hello Everyone!**
 
 Today's post will be about demonstrating how to use our Lyric Generator, as well as our building process!
 
