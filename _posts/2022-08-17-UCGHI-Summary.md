@@ -28,6 +28,7 @@ df = pd.read_csv("2019-2022 Ambassador Demographics - Sheet1.csv")
 df.head()
 ```
 
+<div>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -86,8 +87,64 @@ df.head()
       <td>PH</td>
       <td>Andrew Tseng</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>2019-2020</td>
+      <td>Public Health - Maternal, Child &amp; Adolescent H...</td>
+      <td>UCB</td>
+      <td>Graduate</td>
+      <td>CGHJ</td>
+      <td>Victoria Nguyen</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>2019-2020</td>
+      <td>Public Health - Maternal, Child, and Adolescen...</td>
+      <td>UCB</td>
+      <td>Graduate</td>
+      <td>CGHJ</td>
+      <td>Rebecca Astatke</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>2019-2020</td>
+      <td>Human Biology / Anthropology</td>
+      <td>UCI</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Catthi Ly</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>2019-2020</td>
+      <td>Public Health</td>
+      <td>UCM</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Ifunanya Okezie</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>2019-2020</td>
+      <td>Biochemistry and Cellular Biology / Art Histor...</td>
+      <td>UCSD</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Ikran Ibrahim</td>
+    </tr>
   </tbody>
 </table>
+<p>158 rows × 6 columns</p>
+</div>
 
 
 Get dataframe with campus coordinates
@@ -96,7 +153,7 @@ Get dataframe with campus coordinates
 ```python
 # import campus coordinates and check
 df2 = pd.read_csv("Campus coordinates - Sheet1.csv")
-df2.head()
+df2
 ```
 
 <div>
@@ -146,6 +203,55 @@ df2.head()
       <td>118.4452</td>
       <td>26</td>
     </tr>
+    <tr>
+      <th>5</th>
+      <td>UCD</td>
+      <td>38.5382</td>
+      <td>121.7617</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>UCM</td>
+      <td>37.3647</td>
+      <td>120.4241</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>UCSC</td>
+      <td>36.9821</td>
+      <td>122.0593</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>UCSF</td>
+      <td>37.7632</td>
+      <td>122.4582</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>UC Hastings</td>
+      <td>37.7812</td>
+      <td>122.4158</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>UCI</td>
+      <td>33.6405</td>
+      <td>117.8443</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Charles Drew</td>
+      <td>33.9256</td>
+      <td>118.2425</td>
+      <td>5</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -158,7 +264,7 @@ This will make it simpler for us later on. We'll be using this merged dataframe 
 ```python
 # merge dataframes to obtain coordinates
 df3 = df.merge(df2, on="Campus")
-df3.head()
+df3
 ```
 
 <div>
@@ -186,7 +292,7 @@ df3.head()
       <td>Graduate</td>
       <td>PH</td>
       <td>Alex Maldonado</td>
-      <td>34.414</td>
+      <td>34.4140</td>
       <td>119.8489</td>
       <td>13</td>
     </tr>
@@ -198,7 +304,7 @@ df3.head()
       <td>Undergraduate</td>
       <td>PH</td>
       <td>Alyssa Mandujano</td>
-      <td>34.414</td>
+      <td>34.4140</td>
       <td>119.8489</td>
       <td>13</td>
     </tr>
@@ -210,7 +316,7 @@ df3.head()
       <td>Undergraduate</td>
       <td>PH</td>
       <td>Ashley Willis</td>
-      <td>34.414</td>
+      <td>34.4140</td>
       <td>119.8489</td>
       <td>13</td>
     </tr>
@@ -222,7 +328,7 @@ df3.head()
       <td>Undergraduate</td>
       <td>PH</td>
       <td>Isabella Perez</td>
-      <td>34.414</td>
+      <td>34.4140</td>
       <td>119.8489</td>
       <td>13</td>
     </tr>
@@ -234,19 +340,92 @@ df3.head()
       <td>Undergraduate</td>
       <td>CGHJ</td>
       <td>Arianna Macias</td>
-      <td>34.414</td>
+      <td>34.4140</td>
       <td>119.8489</td>
       <td>13</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>2019-2020</td>
+      <td>Public Health</td>
+      <td>UCM</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Irene Guzman</td>
+      <td>37.3647</td>
+      <td>120.4241</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>2019-2020</td>
+      <td>Psychology / Public Health</td>
+      <td>UCM</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Jacqueline Partida</td>
+      <td>37.3647</td>
+      <td>120.4241</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>2019-2020</td>
+      <td>Public Health</td>
+      <td>UCM</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Sydney Adams</td>
+      <td>37.3647</td>
+      <td>120.4241</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>2019-2020</td>
+      <td>Public Health</td>
+      <td>UCM</td>
+      <td>Undergraduate</td>
+      <td>CGHJ</td>
+      <td>Ifunanya Okezie</td>
+      <td>37.3647</td>
+      <td>120.4241</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>2020-2021</td>
+      <td>Law</td>
+      <td>UC Hastings</td>
+      <td>JD</td>
+      <td>CGHJ</td>
+      <td>Salina Isaq</td>
+      <td>37.7812</td>
+      <td>122.4158</td>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
+<p>157 rows × 9 columns</p>
 </div>
 
 ```python
 # import enrollment info for each campus
 
 enroll = pd.read_csv('UC Enrollment.csv')
-enroll.head()
+enroll
 ```
 
 <div>
@@ -290,10 +469,159 @@ enroll.head()
       <td>UCSD</td>
       <td>38736</td>
     </tr>
+    <tr>
+      <th>5</th>
+      <td>2019</td>
+      <td>UCSB</td>
+      <td>26314</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2019</td>
+      <td>UCSC</td>
+      <td>19494</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2019</td>
+      <td>UCI</td>
+      <td>36908</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2019</td>
+      <td>UCSF</td>
+      <td>3180</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2019</td>
+      <td>UCR</td>
+      <td>25547</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2020</td>
+      <td>UCB</td>
+      <td>42327</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2020</td>
+      <td>UCLA</td>
+      <td>44589</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2020</td>
+      <td>UCM</td>
+      <td>9018</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2020</td>
+      <td>UCD</td>
+      <td>39074</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2020</td>
+      <td>UCSD</td>
+      <td>39576</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2020</td>
+      <td>UCSB</td>
+      <td>26179</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2020</td>
+      <td>UCSC</td>
+      <td>19161</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2020</td>
+      <td>UCI</td>
+      <td>36303</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2020</td>
+      <td>UCSF</td>
+      <td>3201</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2020</td>
+      <td>UCR</td>
+      <td>26434</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2021</td>
+      <td>UCB</td>
+      <td>45036</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2021</td>
+      <td>UCLA</td>
+      <td>46116</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2021</td>
+      <td>UCM</td>
+      <td>9093</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2021</td>
+      <td>UCD</td>
+      <td>40050</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2021</td>
+      <td>UCSD</td>
+      <td>41885</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2021</td>
+      <td>UCSB</td>
+      <td>26124</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2021</td>
+      <td>UCSC</td>
+      <td>19841</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2021</td>
+      <td>UCI</td>
+      <td>36505</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2021</td>
+      <td>UCSF</td>
+      <td>3165</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2021</td>
+      <td>UCR</td>
+      <td>26847</td>
+    </tr>
   </tbody>
 </table>
 </div>
-
 
 ## Check Demographics Info
 
