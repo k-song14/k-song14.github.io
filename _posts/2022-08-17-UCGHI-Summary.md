@@ -88,7 +88,6 @@ df.head()
     </tr>
   </tbody>
 </table>
-</div>
 
 
 Get dataframe with campus coordinates
@@ -150,8 +149,6 @@ df2.head()
   </tbody>
 </table>
 </div>
-
-
 
 We then merge the two dataframes into one in order to obtain the corresponding coordinates for each campus for each student.
 
@@ -245,9 +242,6 @@ df3.head()
 </table>
 </div>
 
-
-
-
 ```python
 # import enrollment info for each campus
 
@@ -299,7 +293,6 @@ enroll.head()
   </tbody>
 </table>
 </div>
-
 
 
 ## Check Demographics Info
@@ -386,6 +379,7 @@ fig.update_layout(xaxis_title="Area of Study")
 fig.show()
 ```
 
+{% include study_chart.html %}
 
 As we can see from the chart, our largest categories are Public/Global Health and Life/Physical Sciences. The smallest category is Computing/Mathematics/Engineering.
 
@@ -422,6 +416,7 @@ fig.update_layout(
 fig.show()
 ```
 
+{% include campus_map.html %}
 
 We'll now be looking at the raw data / count of ambassadors, then we'll account for the student population on each campus.
 
@@ -492,6 +487,7 @@ fig.update_layout(title_text="Student Ambassadors per Campus per Year", barmode=
 fig.show()
 ```
 
+{% include dropdown.html %}
 
 Click on the different options on the dropdown menu to see how many ambassadors come from each campus, as well as how many are planetary health vs. center for gender health and justice. To see the count, hover over each bar / bar stack in the figure.
 
@@ -511,6 +507,7 @@ fig = px.pie(df3,
 fig.show()
 ```
 
+{% include COE.html %}
 
 More than half of the overall population of ambassadors are in the center for gender health and justice.
 
@@ -532,9 +529,6 @@ We will be using the enroll dataframe as well as the demographics dataframe to c
 ```python
 enroll.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -595,7 +589,6 @@ enroll.head()
 </div>
 
 
-
 Let's see which campuses have the largest/smallest overall student population.
 
 
@@ -628,9 +621,6 @@ Moving on, let's create an empty dataframe where we can store the proportions. T
 prop = pd.DataFrame(columns = ['Year', 'Campus', 'Prop'], index = range(30))
 prop.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -806,6 +796,7 @@ fig["layout"].pop("updatemenus")
 fig.show()
 ```
 
+{% include slider_prop.html %}
 
 Click through the slider to see the different proportions throughout the years.
 
@@ -828,9 +819,6 @@ for i in df3['Year'].unique():
                 
 count.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -891,8 +879,6 @@ count.head()
 </div>
 
 
-
-
 ```python
 fig = px.histogram(count,
              x='Year',
@@ -903,6 +889,8 @@ fig = px.histogram(count,
 
 fig.show()
 ```
+
+{% include bar1_percamp.html %}
 
 **Student ambassador demographics raw data:**
 
@@ -935,6 +923,7 @@ fig = px.histogram(prop,
 fig.show()
 ```
 
+{% include bar2_percamp.html %}
 
 **Student ambassador demographics data when accounting for student population:**
 
@@ -1012,6 +1001,8 @@ Using the data, we'll create a pie chart to see what degrees most ambassadors ar
 fig = px.pie(df3, names='Degree', title='Student Ambassador Degrees 2019-2022', color_discrete_sequence=["navy", "skyblue", "darkturquoise", "teal", "royalblue", "deepskyblue"])
 fig.show()
 ```
+
+{% include degrees.html %}
 
 As we can see from the chart, student ambassadors the past three years have been overwhelmingly undergraduate students. Not even all the other degrees combined can surpass, or even match, the amount of undergraduates. The next largest degree is graduate, followed by PhD, MD and then JD.
 
