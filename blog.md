@@ -4,7 +4,7 @@ title: Blog Posts
 permalink: /blog/
 ---
   
-<div style="color:#C7B6DC;">
+<div style="background-color:#C7B6DC;">
   
   <b>Hello!</b>
 
