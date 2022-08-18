@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Blog Posts
-permalink: /more/
+permalink: /blog/
 ---
 
 <div>
