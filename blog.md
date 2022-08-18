@@ -3,17 +3,8 @@ layout: page
 title: Blog Posts
 permalink: /blog/
 ---
-
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-article    {color: lavender;}
-</style>
-</head>
-<body>
   
-<article>
+<div style="color:#C7B6DC;">
   
   <b>Hello!</b>
 
@@ -21,7 +12,7 @@ article    {color: lavender;}
 
   <p>I hope you find these posts helpful and enjoy reading them!</p>
 
-</article>
+</div>
 
 <div class="posts">
   {% for post in site.posts %}
