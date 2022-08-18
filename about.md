@@ -40,39 +40,39 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-deep-purple"></i>+1 (714) 932-6088</p>
           <hr>
           
-                <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+         <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Skills</b></p>
           <p>something</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:90%">90%</div>
           </div>
           <p>something</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">
               <div class="w3-center w3-text-white">80%</div>
             </div>
           </div>
           <p>something</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:75%">75%</div>
           </div>
           <p>something</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:50%">50%</div>
           </div>
           <br>
 
-      <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+      <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
         <p>something</p>
         <div class="w3-light-grey w3-round-xlarge">
           <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
         </div>
         <p>something</p>
         <div class="w3-light-grey w3-round-xlarge">
-          <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
+          <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:55%"></div>
         </div>
         <p>something</p>
         <div class="w3-light-grey w3-round-xlarge">
-          <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
+          <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:25%"></div>
         </div>
           
           <br>
@@ -112,7 +112,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://pilotucla.wixsite.com/pilot"><b>Public Health Initiative: Leaders of Tomorrow (PILOT) at UCLA</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2020 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. orem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
         </div>
       </div>
 
