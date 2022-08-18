@@ -4,7 +4,16 @@ title: Blog Posts
 permalink: /blog/
 ---
 
-<div>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+article    {color: lavender;}
+</style>
+</head>
+<body>
+  
+<article>
   
   <b>Hello!</b>
 
@@ -12,7 +21,7 @@ permalink: /blog/
 
   <p>I hope you find these posts helpful and enjoy reading them!</p>
 
-</div>
+</article>
 
 <div class="posts">
   {% for post in site.posts %}
