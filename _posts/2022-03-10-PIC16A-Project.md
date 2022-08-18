@@ -1,4 +1,14 @@
-# Predicting Penguin Species Using Machine Learning Models
+---
+title: Predicting Penguin Species Using Machine Learning Models
+layout: post
+author: Kelly Song
+---
+
+## Introduction
+
+**Hello everyone!**
+
+Today we'll be predicitng penguin species using machine learning models. We'll be using the Palmer's Penguins dataset for this task.
 
 ## Data Import and Cleaning
 
