@@ -21,23 +21,6 @@ penguins=pd.read_csv("palmer_penguins.csv")
 penguins.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -208,22 +191,9 @@ sns.displot(
 )
 ```
 
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x7fefe2736e50>
-
-
-
-
-    <Figure size 720x432 with 0 Axes>
-
-
-
     
-![png](output_7_2.png)
+![16a_proj_missing.png](/images/16a_proj_missing.png)
     
-
 
 As we can see, "Comments" has a large amount of missing values; it accounts for almost all the data within the column! Thus, we will initially remove the "Comments" column from the data so that when we remove missing values, we aren't left with only a few rows. Delta 15N, Delta 13C, and Sex also appear to have a good amount of missing values as well, but the missing values only accounts for about 4% of the data in each column, so we can just get rid of them rather than impute them.
 
@@ -302,23 +272,7 @@ Next, we will be performing exploratory data analysis on the predictor variables
 X_train.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -469,23 +423,7 @@ We'll start by exploring the numerical variables.
 train[num_vars].head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -584,7 +522,7 @@ density_plot(train, 2, 3)
 
 
     
-![png](output_24_0.png)
+![16a_proj_dist.png](/images/16a_proj_dist.png)
     
 
 
@@ -600,7 +538,7 @@ plt.show()
 
 
     
-![png](output_26_0.png)
+![16a_proj_matrix.png](/images/16a_proj_matrix.png)
     
 
 
@@ -612,22 +550,7 @@ train[cat_vars].head()
 ```
 
 
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -682,17 +605,8 @@ sns.catplot(x="Sex", hue="Species", col="Island", kind = "count", data=train, he
 ```
 
 
-
-
-    <seaborn.axisgrid.FacetGrid at 0x7fefd89146a0>
-
-
-
-
+![16a_proj_bar.png](/images/16a_proj_bar.png)
     
-![png](output_30_1.png)
-    
-
 
 
 ```python
@@ -700,22 +614,7 @@ train.groupby(["Island", "Species", "Sex"])[["Clutch Completion"]].count()
 ```
 
 
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -793,23 +692,7 @@ We will examine our remaining categorical variable "Clutch Completion" by Specie
 train.groupby(["Species", "Clutch Completion"])[["Sex"]].count()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1169,11 +1052,8 @@ def best_graph(N, scores, best_val, param):
 best_graph(N,scores,best_C,"C")
 ```
 
-
+![16a_proj_nneighbor1.png](/images/16a_proj_nneighbor1.png)
     
-![png](output_56_0.png)
-    
-
 
 We will now construct our Support Vector Machine Model with our best C, fit it to our training set with our final variables, and construct the corresponding confusion matrix and testing score when we test it against our testing set.
 
@@ -1214,12 +1094,9 @@ Let's examine the decision region plot between our final variables Culmen Length
 ```python
 plot_regions(SVM,X_test[["Culmen Length (mm)","Culmen Depth (mm)"]],y_test_dc)
 ```
-
-
     
-![png](output_61_0.png)
+![16a_proj_cluster1.png](/images/16a_proj_cluster1.png)
     
-
 
 Our decision region plot supports our confusion matrix: there only seems to be 1 wrong guess! Our decision boundary for this model is linear.
 
@@ -1288,9 +1165,7 @@ plot_regions(m,X_test[["Culmen Length (mm)","Culmen Depth (mm)"]],y_test_dc)
 ```
 
 
-    
-![png](output_69_0.png)
-    
+![16a_proj_cluster2.png](/images/16a_proj_cluster2.png)
 
 
 The decision boundary for this model is non-linear.
@@ -1332,9 +1207,7 @@ From cross validation, our best n_neighbors is 2 with a cross validation score o
 best_graph(N,scores,best_nn,"n_neighbors")
 ```
 
-
-    
-![png](output_74_0.png)
+![16a_proj_nneighbor2.png](/images/16a_proj_nneighbor2.png)
     
 
 
@@ -1374,23 +1247,15 @@ Let's examine the decision region plot between our final variables Culmen Length
 plot_regions(knn,X_test[["Culmen Length (mm)","Culmen Depth (mm)"]],y_test_dc)
 ```
 
-
+![16a_proj_cluster3.png](/images/16a_proj_cluster3.png)
     
-![png](output_79_0.png)
-    
-
 
 Our decision region plot supports our confusion matrix: there only seems to be 1 wrong guess! Our decision boundary for this model is non-linear.
 
 ## Summary
 
-Based on our exploratory data analysis, feature selection, and modeling, we suggest that the best combination of models and features is the Support Vector Machine model with a C value of 2 and variables Culmen Length, Culmen Depth, and Island. 
+Based on the exploratory data analysis, feature selection, and modeling, I suggest that the best combination of models and features is the Support Vector Machine model with a C value of 2 and variables Culmen Length, Culmen Depth, and Island. 
 
-In terms of our models themselves, SVM and KNN performed equally well, each scoring a testing score of about 0.985 with only 1 wrong guess. However, we decided to choose SVM because it gets the same job done without being too complex, and thus is more efficient. Our third model, the random forest classifier, performed the worst, with a testing score of about 0.955 and 3 wrong guesses. We believe these mistakes made by the models may be due to the fact that some of the data points for the different species are very close to one another and thus may be mistakenly classified. 
+In terms of the models themselves, SVM and KNN performed equally well, each scoring a testing score of about 0.985 with only 1 wrong guess. However, I decided to choose SVM because it gets the same job done without being too complex, and thus is more efficient. The third model, the random forest classifier, performed the worst, with a testing score of about 0.955 and 3 wrong guesses. I believe these mistakes made by the models may be due to the fact that some of the data points for the different species are very close to one another and thus may be mistakenly classified. 
 
-We believe that, if more data was available, KNN would end up performing better than SVM because of the fact that it has a non-linear decision boundary, which may be more helpful for more complex data. However, we believe that if we had different data in which the data points for each species are more clustered together, SVM would make less mistakes.
-
-
-```python
-
-```
+I believe that, if more data was available, KNN would end up performing better than SVM because of the fact that it has a non-linear decision boundary, which may be more helpful for more complex data. However, I believe that if we had different data in which the data points for each species are more clustered together, SVM would make less mistakes.
