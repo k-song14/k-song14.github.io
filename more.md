@@ -6,11 +6,11 @@ permalink: /more/
 
 <div>
   
-**Hello!**
+  <b>Hello!</b>
 
-On this page you can see some projects I've worked on in the past. Most of my projects are created using Python, but I'll be adding some projects in R and HTML/CSS soon as well!
+  <p>On this page you can see some projects I've worked on in the past. Most of my projects are created using Python, but I'll be adding some projects in R and HTML/CSS soon as well!</p>
 
-I hope you find these posts helpful and enjoy reading them!
+  <p>I hope you find these posts helpful and enjoy reading them!</p>
 
 </div>
 
