@@ -63,19 +63,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>Organizations</h3>
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://ucghi.universityofcalifornia.edu/centers-of-expertise/womens-health-gender-and-empowerment/coe-student-ambassadors"><b>University of California, Global Health Institute</b></a></h5>
-          <h6 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h6>
+          <h6 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2021 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h6>
           <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
           <hr>
         </div>
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://www.ansirh.org/research/ongoing/california-home-abortion-telehealth-chat-study"><b>California Home Abortion by Telehealth (CHAT) Study</b></a></h5>
-          <h6 class="ww3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+          <h6 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2022 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h6>
           <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
           <hr>
         </div>
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://pilotucla.wixsite.com/pilot"><b>Public Health Initiative: Leaders of Tomorrow (PILOT) at UCLA</b></a></h5>
-          <h6 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+          <h6 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2020 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
         </div>
       </div>
