@@ -41,35 +41,30 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
           
          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Skills</b></p>
-          <p>Python</p>
+          <p>Python (numpy, scrapy, pandas, etc.)</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:90%">90%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">80%</div>
           </div>
-          <p>R</p>
+          <p>R (dplyr, ggplot2, etc.)</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">
+              <div class="w3-center w3-text-white">70%</div>
             </div>
           </div>
-          <p>Data Analysis</p>
+          <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:75%">75%</div>
-          </div>
-          <p>Statistical Modeling</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:60%">60%</div>
           </div>
           <br>
-
-      <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
-        <p>English</p>
-        <div class="w3-light-grey w3-round-xlarge">
-          <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:100%"></div>
-        </div>
-        <p>Mandarin</p>
-        <div class="w3-light-grey w3-round-xlarge">
-          <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:55%"></div>
-        </div>
+          <p>Data Visualization</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">              
+              <div class="w3-center w3-text-white">70%</div>
+            </div>
+          <p>Data Analysis</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">80%</div>
+          </div>
           
           <br>
           <br>
