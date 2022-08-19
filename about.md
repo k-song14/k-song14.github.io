@@ -51,26 +51,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
           <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:60%">
-               <div class="w3-center w3-text-white">60%</div>
-            </div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:60%">60%</div>
           </div>
           <p>Data Visualization</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">              
-              <div class="w3-center w3-text-white">70%</div>
-            </div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">70%</div>
           <\div>
           <p>Data Analysis</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">
-                 <div class="w3-center w3-text-white">80%</div>
-            </div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">80%</div>
           </div>
           
           <br>
           <br>
-        </div>
       </div><br>
 
     <!-- End Left Column -->
