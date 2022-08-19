@@ -47,9 +47,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
           <p>R (dplyr, ggplot2, etc.)</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">
-              <div class="w3-center w3-text-white">70%</div>
-            </div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">70%</div>
           </div>
           <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -62,6 +60,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">              
               <div class="w3-center w3-text-white">70%</div>
             </div>
+          <\div>
           <p>Data Analysis</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">
