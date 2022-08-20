@@ -5,7 +5,6 @@ permalink: /about/
 
 <html>
 <head>
-<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -43,7 +42,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Skills</b></p>
           <p>Data Analysis</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:90%">90%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:75%">75%</div>
           </div>
           <p>Data Visualization</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -53,7 +52,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
           <p>Statistical Models</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:75%">75%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:70%">70%</div>
           </div>
           <p>Tableau</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -64,15 +63,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p class="w3-large w3-text-theme"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
           <p>Python</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:100%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:80%">80%</div>
           </div>
           <p>R</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:55%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:70%">70%</div>
           </div>
           <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:25%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:50%">50%</div>
           </div>
           <br>
         </div>
