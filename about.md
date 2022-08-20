@@ -28,47 +28,51 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="/images/kellysong.png" style="width:100%" alt="Avatar">
+          <img src="/w3images/avatar_hat.jpg" style="width:100%" alt="Avatar">
           <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2 class = "w3-text-white">Kelly Song</h2>
+            <h2>Jane Doe</h2>
           </div>
         </div>
         <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-deep-purple"></i>Student</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-deep-purple"></i>Los Angeles, CA</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-deep-purple"></i>ksong14@g.ucla.edu</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-deep-purple"></i>+1 (714) 932-6088</p>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
           <hr>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Data Visualization</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-          </div>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Skills</b></p>
           <p>Data Analysis</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:90%">90%</div>
+          </div>
+          <p>Data Visualization</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:80%">
+              <div class="w3-center w3-text-white">80%</div>
+            </div>
           </div>
           <p>Statistical Models</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:75%">75%</div>
+          </div>
+          <p>Tableau</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:50%">50%</div>
           </div>
           <br>
-          <br>
-        </div>
-        
-        <p class="w3-large w3-text-theme"><b><i class="fa fa-code fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-laptop-code fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
           <p>Python</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:100%"></div>
           </div>
           <p>R</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:55%"></div>
           </div>
           <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:25%"></div>
           </div>
           <br>
         </div>
