@@ -81,8 +81,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
           <p>HTML/CSS</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:30%">
-            <div class="w3-center w3-text-white">30%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-purple" style="width:50%">
+            <div class="w3-center w3-text-white">50%</div>
             </div>
           </div>
           <br>
