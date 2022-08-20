@@ -63,15 +63,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p class="w3-large w3-text-theme"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Languages</b></p>
           <p>Python</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:80%">80%</div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:80%">
+            <div class="w3-center w3-text-white">80%</div>
+            </div>
           </div>
           <p>R</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:70%">70%</div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:70%">
+              <div class="w3-center w3-text-white">70%</div>
+            </div>
           </div>
           <p>SQL</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:50%">50%</div>
+            <div class="w3-round-xlarge w3-deep-purple" style="height:24px;width:60%">
+            <div class="w3-center w3-text-white">60%</div>
+            </div>
           </div>
           <br>
         </div>
