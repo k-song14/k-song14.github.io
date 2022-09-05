@@ -1,0 +1,417 @@
+---
+title: "Stats 101C Final Project Code"
+author: "Stats 101C - Fall 2021 - Kelly Song - 305396198"
+date: "12/5/2021"
+output: html_document
+---
+
+###Analyzing/Cleaning Data
+```{r}
+
+library(readr)
+HDtrainNew <- read_csv("/Users/k/Documents/STATS 101C/Data sets/HDtrainNew.csv")
+HDtestNoYNew <- read_csv("/Users/k/Documents/STATS 101C/Data sets/HDtestNoYNew.csv")
+
+HDtrain <- HDtrainNew[,-1]
+HDtest <- HDtestNoYNew[,-1]
+
+dim(HDtrain)
+dim(HDtest)
+
+#Numerical and categorical variables
+
+num_train <- HDtrain[sapply(HDtrain,is.numeric)]
+length(num_train) 
+
+num_test <- HDtest[sapply(HDtest,is.numeric)]
+length(num_test)
+
+#7 numerical variables in both training and testing data; thus, there are 13 categorical variables in both the training and testing data 
+
+
+#turn training data categorical predictors into factors
+HDtrain[sapply(HDtrain,is.character)] <- lapply(HDtrain[sapply(HDtrain,is.character)], factor)
+
+#turn testing data categorical predictors into factors
+HDtest[sapply(HDtest,is.character)] <- lapply(HDtest[sapply(HDtest,is.character)], factor)
+
+#clean up Sex variable so they all match
+HDtrain[which(HDtrain$Sex == 'F'),1] = 'Female'
+HDtrain[which(HDtrain$Sex == 'M'),1] = 'Male'
+
+HDtest[which(HDtest$Sex == 'F'),1] = 'Female'
+HDtest[which(HDtest$Sex == 'M'),1] = 'Male'
+
+#change missing values in smoking_status to "Unknown"
+HDtrain$smoking_status[is.na(HDtrain$smoking_status)] <- "Unknown"
+HDtest$smoking_status[is.na(HDtest$smoking_status)] <- "Unknown"
+
+#Training: missing values
+length(HDtrain[is.na(HDtrain)==TRUE])
+#about 1893 missing values
+
+#Testing: missing values
+length(HDtest[is.na(HDtest)==TRUE])
+#about 1148 missing values
+
+library(VIM)
+
+HDtraintNA_plot <- aggr(HDtrain, col=c('blue','green'),
+numbers=TRUE, sortVars=TRUE, labels=names(HDtrain), cex.axis=.7, gap=3, ylab=c("Missing data","Pattern"))
+#ever_married, work_type, residence_type; each has 631 missing values and each accounts for 14.95261% of the total data for each variable
+
+HDtestNA_plot <- aggr(HDtest, col=c('blue','green'),
+numbers=TRUE, sortVars=TRUE, labels=names(HDtest), cex.axis=.7, gap=3, ylab=c("Missing data","Pattern"))
+#ever_married, work_type, residence_type; each has 287 missing values and each accounts for 15.87389% of the total data for each variable 
+
+```
+
+###Imputing Data
+```{r}
+
+#Let's impute our missing values. We'll try with the default methods, pmm, and sample
+
+library(mice)
+
+HDtrainMICE <- mice(HDtrain, m=1, seed = 1128,  defaultMethod = c("pmm", "logreg", "polyreg", "polr"))
+summary(HDtrainMICE)
+HDtrainMICE.data <- complete(HDtrainMICE)
+
+HDtrainMICE.pmm<- mice(HDtrain, m=1, method = 'pmm', seed = 1128)
+summary(HDtrainMICE.pmm)
+HDtrainMICE.pmm.data <- complete(HDtrainMICE.pmm)
+
+HDtrainMICE.samp <- mice(HDtrain, m=1, method = 'sample', seed = 1128)
+HDtrainMICE.samp.data <- complete(HDtrainMICE.samp)
+
+prop.table(table(HDtrain$ever_married))
+prop.table(table(HDtrainMICE.data$ever_married))
+prop.table(table(HDtrainMICE.pmm.data$ever_married))
+prop.table(table(HDtrainMICE.samp.data$ever_married))
+#sample.data is closest to OG data for ever_married
+
+prop.table(table(HDtrain$work_type))
+prop.table(table(HDtrainMICE.data$work_type))
+prop.table(table(HDtrainMICE.pmm.data$work_type))
+prop.table(table(HDtrainMICE.samp.data$work_type))
+#sample.data is closest to OG data for work_type
+
+prop.table(table(HDtrain$Residence_type))
+prop.table(table(HDtrainMICE.data$Residence_type))
+prop.table(table(HDtrainMICE.pmm.data$Residence_type))
+prop.table(table(HDtrainMICE.samp.data$Residence_type))
+#pmm is closest to OG data for Residence_type
+
+#we will use the imputations using the sample method, since it matches the original data best
+
+##imputing test data 
+
+HDtestMICE.samp <- mice(HDtest, m=1, method = 'sample', seed = 1128)
+HDtestMICE.samp.data <- complete(HDtestMICE.samp)
+
+```
+
+###Variable Selection
+
+##Numerical predictors
+
+## Transformations and Boxplots for Numerical Variables
+
+```{r}
+library(car)
+powerTransform(HDtrain$avg_glucose_level)
+powerTransform(HDtrain$bmi)
+powerTransform(HDtrain$Age)
+powerTransform(HDtrain$MaxHR)
+```
+
+
+```{r}
+
+library(ggplot2)
+
+ggplot(HDtrain,aes((Age),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+```
+
+```{r}
+ggplot(HDtrain,aes(RestingBP,fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red") #couldnt be transformed
+```
+
+```{r}
+ggplot(HDtrain,aes(Cholesterol,fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red") #cant be transformed, there are outliers but still up for consideration
+```
+
+```{r}
+ggplot(HDtrain,aes((MaxHR),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+ggplot(HDtrain,aes((MaxHR)^(3/2),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+#transformation removes some of the outliers, up for consideration
+```
+
+```{r}
+ggplot(HDtrain,aes(Oldpeak,fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red") #couldnt be transformed and lots of outliers
+```
+
+```{r}
+
+ggplot(HDtrain,aes((avg_glucose_level),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+ggplot(HDtrain,aes((avg_glucose_level)^-1,fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+#before transforming, boxplot has a ton of outliers, after transformation there are barely any so avg glucose is up for consideration 
+
+```
+
+```{r}
+ggplot(HDtrain,aes(log(bmi),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+ggplot(HDtrain,aes((bmi),fill=HeartDisease))+geom_boxplot(outlier.size = 1, outlier.color = "red")
+#more outliers before transformation, still a lot after. not a good predictor
+```
+
+## Correlation matrix and graphing distributions
+```{r}
+
+library(Hmisc)
+rcorr(as.matrix(HDtrain[,sapply(HDtrain,is.numeric)]))
+
+#highest correlation coefficients w/ significant p-values: Age&MaxHR, avg_glucose_level&Cholesterol, so we will be careful with these variables when constructing our models
+
+summary(glm(HeartDisease~Age, family=binomial, data=HDtrain))
+summary(glm(HeartDisease~MaxHR, family=binomial, data=HDtrain))
+summary(glm(HeartDisease~MaxHR+Age, family=binomial, data=HDtrain))
+#by looking at AIC, we can see that the model with just MaxHR is better (and by a lot), so we will keep that in mind
+
+summary(glm(HeartDisease~avg_glucose_level, family=binomial, data=HDtrain))
+summary(glm(HeartDisease~Cholesterol, family=binomial, data=HDtrain))
+summary(glm(HeartDisease~avg_glucose_level+Cholesterol, family=binomial, data=HDtrain))
+#avg_glucose_level seems to have a better model (though not by too much) so we will keep that in mind
+
+#plotting densities of numerical variables
+g1 <- ggplot(HDtrain, aes(x=Age, color = HeartDisease)) + geom_density()
+g2 <- ggplot(HDtrain, aes(x=RestingBP, color = HeartDisease)) + geom_density()
+g3 <- ggplot(HDtrain, aes(x=Cholesterol, color = HeartDisease)) + geom_density()
+g4 <- ggplot(HDtrain, aes(x=MaxHR, color = HeartDisease)) + geom_density()
+g5 <- ggplot(HDtrain, aes(x=Oldpeak, color = HeartDisease)) + geom_density()
+g6 <- ggplot(HDtrain, aes(x=avg_glucose_level, color = HeartDisease)) + geom_density()
+g7 <- ggplot(HDtrain, aes(x=bmi, color = HeartDisease)) + geom_density()
+
+library(gridExtra) 
+grid.arrange(g1,g2,g3,g4,nrow=2)
+grid.arrange(g5,g6,g7,nrow=2)
+
+#the graphs seem to suggest that avg_glucose_level, Age, and MaxHR are good numerical predictors
+
+```
+
+##Categorical predictors
+```{r}
+
+ChiSquareTest <- function(x){
+  test <- chisq.test(x, HDtrain$HeartDisease)
+  return(test$p.value)
+}
+
+lapply(HDtrain[,sapply(HDtrain,is.factor)], ChiSquareTest)
+
+#variables with significant p-values: Sex, ChestPainType, ExerciseAngina, ST_slope, FastingBS, hypertension, ever_married, work_type, smoking_status, stroke
+
+library(ggplot2)
+c1 <- ggplot(HDtrain,aes(Sex,fill=HeartDisease))+geom_bar()
+c2 <- ggplot(HDtrain,aes(ChestPainType,fill=HeartDisease))+geom_bar()
+c3 <- ggplot(HDtrain,aes(ExerciseAngina,fill=HeartDisease))+geom_bar()
+c4 <- ggplot(HDtrain,aes(ST_Slope,fill=HeartDisease))+geom_bar()
+c5 <- ggplot(HDtrain,aes(FastingBS,fill=HeartDisease))+geom_bar()
+c6 <- ggplot(HDtrain,aes(hypertension,fill=HeartDisease))+geom_bar()
+c7 <- ggplot(HDtrainMICE.samp.data,aes(ever_married,fill=HeartDisease))+geom_bar()
+c8 <- ggplot(HDtrainMICE.samp.data,aes(work_type,fill=HeartDisease))+geom_bar()
+c9 <- ggplot(HDtrain,aes(smoking_status,fill=HeartDisease))+geom_bar()
+c10 <- ggplot(HDtrain,aes(stroke,fill=HeartDisease))+geom_bar()
+c11 <- ggplot(HDtrain,aes(RestingECG,fill=HeartDisease))+geom_bar()
+c12 <- ggplot(HDtrainMICE.samp.data,aes(Residence_type,fill=HeartDisease))+geom_bar()
+
+grid.arrange(c1,c2,c3,c4, nrow=2)
+grid.arrange(c5,c6,c7,c8, nrow=2)
+grid.arrange(c9,c10,c11,c12, nrow=2)
+
+#graphs suggest that significant predictors seem to be: stroke, ever_married, work_type, hypertension, FastingBS, smoking_status, which are all also significant in the chi-square test
+
+```
+
+
+###Model construction
+
+## Random Forest
+```{r}
+
+library(ggplot2)
+library(randomForest)
+set.seed(1)
+train <- sample(1:nrow(HDtrainMICE.samp.data), round(nrow(HDtrainMICE.samp.data)*.7))
+
+#finding MCRs at different mtry levels for each model
+mcr.full <- numeric(19)
+for(i in 1:19){
+ rf.heart <- randomForest(HeartDisease~., data = HDtrainMICE.samp.data, subset=train, mtry=i,importance = TRUE)
+pred.rf<- predict(rf.heart, newdata = HDtrainMICE.samp.data, type = "class")
+conf.matrix.rf <- table(pred.rf, HDtrainMICE.samp.data$HeartDisease)
+misclass.icu.rf <- (conf.matrix.rf[2,1]+conf.matrix.rf[1,2])/sum(conf.matrix.rf)
+ mcr.full[i] <- misclass.icu.rf
+}
+
+mcr <- numeric(15)
+for(i in 1:15){
+ rf.heart.15 <- randomForest(HeartDisease~Oldpeak + avg_glucose_level +MaxHR + Age+Cholesterol+FastingBS +ST_Slope+RestingBP +bmi +ever_married +ExerciseAngina +ChestPainType +smoking_status +Sex + hypertension, data = HDtrainMICE.samp.data, subset=train, mtry=i,importance = TRUE)
+pred.rf.15 <- predict(rf.heart.15, newdata = HDtrainMICE.samp.data, type = "class")
+conf.matrix.rf.15 <- table(pred.rf.15, HDtrainMICE.samp.data$HeartDisease)
+misclass.icu.rf.15 <- (conf.matrix.rf.15[2,1]+conf.matrix.rf.15[1,2])/sum(conf.matrix.rf.15)
+ mcr[i] <- misclass.icu.rf.15
+}
+
+mcr.10 <- numeric(10)
+for(i in 1:10){
+ rf.heart.10 <- randomForest(HeartDisease~Oldpeak + avg_glucose_level +MaxHR + Age+FastingBS +ST_Slope+RestingBP +bmi +ChestPainType +smoking_status, data = HDtrainMICE.samp.data, subset=train, mtry=i,importance = TRUE)
+pred.rf.10 <- predict(rf.heart.10, newdata = HDtrainMICE.samp.data, type = "class")
+conf.matrix.rf.10 <- table(pred.rf.10, HDtrainMICE.samp.data$HeartDisease)
+misclass.icu.rf.10 <- (conf.matrix.rf.10[2,1]+conf.matrix.rf.10[1,2])/sum(conf.matrix.rf.10)
+ mcr.10[i] <- misclass.icu.rf.10
+}
+
+#full model
+rf.heart <- randomForest(HeartDisease~., data = HDtrainMICE.samp.data, subset=train, mtry=5,importance = TRUE)
+rf.heart
+varImpPlot(rf.heart)
+
+#training missclassification rate of full model
+pred.rf <- predict(rf.heart, newdata = HDtrainMICE.samp.data[-train,], type = "class")
+conf.matrix.rf <- table(pred.rf, HDtrainMICE.samp.data[-train,]$HeartDisease)
+misclass.icu.rf <- (conf.matrix.rf[2,1]+conf.matrix.rf[1,2])/sum(conf.matrix.rf)
+conf.matrix.rf
+misclass.icu.rf #misclassification rate of 0.2014218
+
+#removing the worst 4 for the next model to make model of 15
+#worst 4: stroke, residence_type, work_type, and restingECG
+
+rf.heart.15 <- randomForest(HeartDisease~Oldpeak + avg_glucose_level +MaxHR + Age+Cholesterol+FastingBS +ST_Slope+RestingBP +bmi +ever_married +ExerciseAngina +ChestPainType +smoking_status +Sex + hypertension, data = HDtrainMICE.samp.data, subset=train, mtry=4,importance = TRUE)
+rf.heart.15
+varImpPlot(rf.heart.15)
+#worst 5: hypertension, sex, cholesterol, exercise, married
+
+#training misclassification rate of 15 predictor model
+pred.rf.15 <- predict(rf.heart.15, newdata = HDtrainMICE.samp.data[-train,], type = "class")
+conf.matrix.rf.15 <- table(pred.rf.15, HDtrainMICE.samp.data[-train,]$HeartDisease)
+misclass.icu.rf.15 <- (conf.matrix.rf.15[2,1]+conf.matrix.rf.15[1,2])/sum(conf.matrix.rf.15)
+conf.matrix.rf.15
+misclass.icu.rf.15 #missclassification rate of 0.1999842
+
+#10 predictors
+rf.heart.10 <- randomForest(HeartDisease~Oldpeak + avg_glucose_level +MaxHR + Age+FastingBS +ST_Slope+RestingBP +bmi +ChestPainType +smoking_status, data = HDtrainMICE.samp.data, subset=train, mtry=3,importance = TRUE)
+rf.heart.10
+varImpPlot(rf.heart.10)
+
+#training missclassification rate of 10 predictor model
+pred.rf.10 <- predict(rf.heart.10, newdata = HDtrainMICE.samp.data[-train,], type = "class")
+conf.matrix.rf.10 <- table(pred.rf.10, HDtrainMICE.samp.data[-train,]$HeartDisease)
+misclass.icu.rf.10 <- (conf.matrix.rf.10[2,1]+conf.matrix.rf.10[1,2])/sum(conf.matrix.rf.10)
+conf.matrix.rf.10
+misclass.icu.rf.10 #missclassification rate of 0.2101106
+
+#graphing MCRs of the models 
+data <- list(full = mcr.full, reduced15 = mcr, reduced10 = mcr.10)
+data <- lapply(data, function(x) cbind(x = seq_along(x), y = x))
+
+list.names <- names(data)
+lns <- sapply(data, nrow)
+data <- as.data.frame(do.call("rbind", data))
+data$group <- rep(list.names, lns)
+
+ggplot(data, aes(x=x, y=y, color = group))+theme_bw() +geom_line()+geom_point()+labs(title = "MTRY vs MCR", subtitle = "for Full/15/10 model", x = "mtry", y = "MCR")
+
+```
+
+## Logistic Regression
+
+```{r}
+
+##We will run a stepwise selection model with a combination of forward and backwards selection with our numerical variables to choose the best variables
+
+
+#since the transformations from earlier suggested that transformation avg_glucose_level could be beneficial, we will run two stepwise selections: one with the original avg_glucose_level and one with a new variable: newglucose, which the the transformed avg_glucose_level
+HDtrainMICE.samp.data$newglucose <- (HDtrainMICE.samp.data$avg_glucose_level)^-1
+
+library(car)
+library(MASS)
+
+#model with original glucose
+testing <-  glm(HeartDisease ~ RestingBP+Cholesterol+MaxHR+Oldpeak+avg_glucose_level+bmi+Age, family = binomial, data = HDtrainMICE.samp.data)
+
+#model with transformed glucose variable
+testing.ng <-  glm(HeartDisease ~ RestingBP+Cholesterol+MaxHR+Oldpeak+newglucose+bmi+Age, family = binomial, data = HDtrainMICE.samp.data)
+
+vif(testing) #values < 5
+
+vif(testing.ng) #values < 5
+
+testing.step <- stepAIC(testing, method = "exhaustive", trace=F)
+testing.step.ng <- stepAIC(testing.ng, method = "exhaustive", trace=F)
+
+#the first step model chose: Cholesterol, MaxHR, OldPeak, and avg_glucose_level; this validates our earlier analysis that MaxHR is a good predictor and should be chosen over Age. This also validates our earlier analysis that avg_glucose_level would be a good numerical predictor and that, while removing Cholesterol did improve the AIC value, it was not improved by much so having Cholesterol and avg_glucose_level together is not as drastic as having MaxHR and Age together
+
+#the step model with the transformed glucose chose: Cholesterol, MaxHR, Oldpeak, newglucose, and bmi
+
+```
+
+```{r}
+
+##We will run a stepwise selection model with a combination of forward and backwards selection with our categorical variables to choose the best variables
+
+testing2 <-  glm(HeartDisease ~ .-(RestingBP+Cholesterol+MaxHR+Oldpeak+avg_glucose_level+bmi+Age), family = binomial, data = HDtrainMICE.samp.data)
+
+vif(testing2) #ST_slope and ChestPainType have high values, so let's remove them
+
+testing2 <-  glm(HeartDisease ~ .-(RestingBP+Cholesterol+MaxHR+Oldpeak+avg_glucose_level+bmi+Age+ChestPainType+ST_Slope), family = binomial, data = HDtrainMICE.samp.data)
+
+vif(testing2)
+
+testing2.step <- stepAIC(testing2, method = "exhaustive", trace=F)
+
+vif(testing2.step)
+
+##the stepwise selection chose Sex, FastingBS, RestingECG, ExerciseAngina, ever_married, work_type, Residence_type, and stroke as our categorical predictors. This validates our earlier analysis with the chi-square test and bar graphs that stroke, ever_married, work_type and FastingBS could be good categorical predictors
+
+```
+
+```{r}
+
+###stepAIC with categorical and numerical variables selected by previous stepAIC models; we will use both the transformed avg_glucose_level (newglucose) and the original avg_glucose_level and their corresponding variables chosen by stepAIC
+
+testing3.step <- stepAIC(glm(HeartDisease ~ Cholesterol+MaxHR+Oldpeak+avg_glucose_level+Sex+FastingBS+RestingECG+ExerciseAngina+ever_married+work_type+Residence_type+stroke, family = binomial, data = HDtrainMICE.samp.data), method = "exhaustive", trace=F)
+
+testing3.step.ng <- stepAIC(glm(HeartDisease ~ Cholesterol+MaxHR+Oldpeak+newglucose+bmi+Sex+FastingBS+RestingECG+ExerciseAngina+ever_married+work_type+Residence_type+stroke, family = binomial, data = HDtrainMICE.samp.data), method = "exhaustive", trace=F)
+
+pred.prob<-predict(testing3.step,type="response",data=HDtrainMICE.samp.data)
+predicted.HD<-pred.prob>.5
+table(predicted.HD,HDtrainMICE.samp.data$HeartDisease)
+(328+471)/4220 #misclassification rate of 0.1893365
+
+pred.prob2<-predict(testing3.step.ng,type="response",data=HDtrainMICE.samp.data)
+predicted.HD2<-pred.prob2>.5
+table(predicted.HD2,HDtrainMICE.samp.data$HeartDisease)
+(339+477)/4220 #misclassification rate of  0.1933649, which is higher than that of testing3.step, so we will use the model with the original avg_glucose_level
+
+```
+
+###Final Model Selection
+**We chose the model that had both the smallest misclassification rate and was the simplest: our stepAIC (stepwise selection using forward and backwards selection) model with logistic regression using the original avg_glucose_level and other variables chosen by stepAIC**
+```{r}
+pred.prob10 = predict(testing3.step,type="response",data=HDtrainMICE.samp.data, newdata = HDtestMICE.samp.data)
+
+D.glm.pred10=rep("No",dim(HDtestMICE.samp.data)[1])
+D.glm.pred10[pred.prob10>0.5]="Yes"
+
+HDtest.pred10 <- as.data.frame(D.glm.pred10)
+HDtest.pred10[,2] = HDtest.pred10[,1]
+HDtest.pred10[,1] = 1:1808
+colnames(HDtest.pred10) <- c("Ob", "HeartDisease")
+
+write.csv(HDtest.pred10, "/Users/k/Documents/STATS 101C/Data sets/test10.pred.csv", row.names = FALSE)
+
+#scored 0.80869 on Kaggle
+
+```
