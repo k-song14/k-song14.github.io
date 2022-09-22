@@ -113,7 +113,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://ucghi.universityofcalifornia.edu/centers-of-expertise/womens-health-gender-and-empowerment/coe-student-ambassadors"><b>University of California, Global Health Institute</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2021 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <p>
+              <li>Led initiative to expand Student Ambassador program by developing 10+ Student Assistant and committee positions</li>
+              <li>Oversaw administrative program support and student-led committees of 70+ ambassadors</li>
+              <li>Constructed and analyzed database of~150 student ambassadors devise a demographic summary report</li>
+              <li>Presented <a href="https://k-song14.github.io/UCGHI-Summary/">summary report</a> to the UCGHI board to develop new strategies to bridge disparities in recruitment process</li>
+          </p>
           <hr>
         </div>
         <div class="w3-container">
