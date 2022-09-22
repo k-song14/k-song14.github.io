@@ -124,13 +124,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://www.ansirh.org/research/ongoing/california-home-abortion-telehealth-chat-study"><b>California Home Abortion by Telehealth (CHAT) Study</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2022 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <p>
+            <li>Utilized Python to recode and analyze demographic variables of over 17,000 participants, contributing towards a nationwide telehealth abortion study</li>
+            <li>Established and implemented equations for variable recoding using RedCap to clean data for further analysis</li>
+            <li>Drafted a literature review gauging the safety and efficacy of period tracking apps</li>          
+          </p>
           <hr>
         </div>
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://pilotucla.wixsite.com/pilot"><b>Public Health Initiative: Leaders of Tomorrow (PILOT) at UCLA</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2020 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. orem ipsum dolor sit amet, consectetur adipisicing elit. orem ipsum dolor sit amet, consectetur adipisicing elit.</p><br>
+          <p>
+            <li>Recruited and ensured consistent involvement of 100+ undergraduate and graduate PILOT members</li>
+            <li>Managed and delegated tasks to the executive board and committees of 30+ members</li>
+            <li>Planned bi-weekly events for education and professional development</li>       
+          </p><br>
         </div>
       </div>
 
