@@ -111,10 +111,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><a href="https://ucghi.universityofcalifornia.edu/centers-of-expertise/womens-health-gender-and-empowerment/coe-student-ambassadors"><b>University of California, Global Health Institute</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2021 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
           <p>
-              <li>Led initiative to expand Student Ambassador program by developing 10+ Student Assistant and committee positions</li>
-              <li>Oversaw administrative program support and student-led committees of 70+ ambassadors</li>
-              <li>Constructed and analyzed database of~150 student ambassadors devise a demographic summary report</li>
-              <li>Presented <a href="https://k-song14.github.io/UCGHI-Summary/">summary report</a> to the UCGHI board to develop new strategies to bridge disparities in recruitment process</li>
+            
           </p>
           <hr>
         </div>
@@ -122,9 +119,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><a href="https://www.ansirh.org/research/ongoing/california-home-abortion-telehealth-chat-study"><b>California Home Abortion by Telehealth (CHAT) Study</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2022 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
           <p>
-            <li>Utilized Python to recode and analyze demographic variables of over 17,000 participants, contributing towards a nationwide telehealth abortion study</li>
-            <li>Established and implemented equations for variable recoding using RedCap to clean data for further analysis</li>
-            <li>Drafted a literature review gauging the safety and efficacy of period tracking apps</li>          
+        
           </p>
           <hr>
         </div>
@@ -132,9 +127,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><a href="https://pilotucla.wixsite.com/pilot"><b>Public Health Initiative: Leaders of Tomorrow (PILOT) at UCLA</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2020 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
           <p>
-            <li>Recruited and ensured consistent involvement of 100+ undergraduate and graduate PILOT members</li>
-            <li>Managed and delegated tasks to the executive board and committees of 30+ members</li>
-            <li>Planned bi-weekly events for education and professional development</li>       
+    
           </p><br>
         </div>
       </div>
