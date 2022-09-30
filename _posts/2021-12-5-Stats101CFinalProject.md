@@ -5,6 +5,10 @@ date: "12/5/2021"
 output: html_document
 ---
 
+## Introduction
+
+This page contains the final project for my Introduction to Statistical Models and Data Mining class in Fall 2021.
+
 # **Abstract**
   This Kaggle project aims to predict the diagnosis of heart disease using statistical learning models based on the training and testing data sets provided. This paper provides a clear description of how we built the final model, including introduction, data analysis & cleaning, feature selection, methodology, and conclusions and limitations. 
   The final model is a logistic regression with a misclassification rate of 0.1893365 and a Kaggle score of 0.80869. The model used four numerical and seven categorical predictors: Cholesterol, MaxHR, Oldpeak, avg_glucose_level, Sex, FastingBS, RestingECG, ExerciseAngina, ever_married, work_type, Residence_type, and stroke. 
