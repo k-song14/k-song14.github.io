@@ -101,7 +101,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
        <div class="w3-container w3-card w3-white">
         <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>About</h3>
         <div class="w3-container">
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <p>Dependable, motivated, and diligent Statistics undergraduate student with extensive experience in leadership and collaboration. Aspiring to pursue a career in data analytics and/or data science. Currently looking for jobs in data analytics or data science.</p>
         </div>
       </div>
     
@@ -119,7 +119,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><a href="https://www.ansirh.org/research/ongoing/california-home-abortion-telehealth-chat-study"><b>California Home Abortion by Telehealth (CHAT) Study</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2022 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
           <p>
-        
+            <li>Utilized Python to recode and analyze demographic variables of over 17,000 participants, contributing towards a nationwide telehealth abortion study</li>
+            <li>Engineered and implemented equations in RedCap for variable recoding to clean data for further analysis</li>
+            <li>Researched peer-reviewed sources to draft a literature review gauging the safety and efficacy of period tracking apps</li>
           </p>
           <hr>
         </div>
