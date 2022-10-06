@@ -88,11 +88,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <br>
           
           <p class="w3-large w3-text-theme"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-deep-purple"></i>Interests</b></p>
-          <li>Travel</li>
-          <li>Thrifting</li>
-          <li>Concerts/music festivals</li>
-          <li>Fashion</li>
-          <li>Skincare</li>
+          <p>Travel, thrifting, concerts/music festivals, fashion and skincare</p>
           <br>
      
           
