@@ -322,7 +322,7 @@ grid.arrange(c9,c10,c11,c12, nrow=2)
 
 ![predheart5.png](/images/predheart5.png) ![predheart6.png](/images/predheart6.png) 
 
-The graphs above on the left are examples of the variables we found were significant predictors while the graphs on the right were examples of variables we deemed as poor predictors of the HeartDisease variable. 
+The graphs above on the top are examples of the variables we found were significant predictors while the graphs on the bottom were examples of variables we deemed as poor predictors of the HeartDisease variable. 
 
 Next, we performed stepwise logistic regression on the categorical variables alone to choose our predictors. We first ran a logistic regression model with all of our categorical predictors and calculated the VIF. Since the variables ST_slope and ChestPainType had VIF values greater than 5, we decided to remove them and run a logistic regression model without them. We then used stepAIC with the exhaustive method, which ended up choosing Sex, FastingBS, RestingECG, ExerciseAngina, ever_married, work_type, Residence_type, and stroke This validates our earlier analysis with the chi-square test and bar graphs that stroke, ever_married, work_type, and FastingBS could be good categorical predictors.
 	
