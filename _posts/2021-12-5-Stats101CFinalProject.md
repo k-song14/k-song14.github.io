@@ -24,7 +24,7 @@ In this Kaggle project, we utilized various data mining techniques, such as data
 We were provided with two data sets to conduct our analysis, one for testing and one for training. The training data set contained seven numerical variables and thirteen categorical, one of the categorical variables was our response variable HeartDisease. The testing data set contained the same seven numerical variables and twelve categorical variables because it excluded the response variable. The numerical variables included Age, RestingBP, Cholesterol,  MaxHR, Oldpeak, avg_glucose_level, and bmi, while the categorical variables included Sex, ChestPainType, FastingBS, RestingECG, ExerciseAngina, ST_slope, hypertension, ever_married, work_type, Residence_type, smoking_status, stroke, and HeartDisease. Furthermore, the training data set had 4220 observations and the testing had 1808 observations.  
    
    
-```{r}
+```python
 
 library(readr)
 HDtrainNew <- read_csv("/Users/k/Documents/STATS 101C/Data sets/HDtrainNew.csv")
