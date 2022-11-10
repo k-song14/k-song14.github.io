@@ -16,6 +16,7 @@ The final model is a logistic regression with a misclassification rate of 0.1893
 
 # **Introduction**
 Heart disease is a significant and lethal issue that, according to the World Health Organization, causes an estimated 12 million deaths worldwide each year (Krishnaiah V. et al.). Due to the prevalence of heart disease, early and accurate diagnoses are integral to its prevention. In fact, early and accurate diagnoses of coronary heart disease, one of the most common diseases in the world, helps reduce mortality rates by allowing for appropriate and early treatment of the condition (Abdar M. et al.). Not only can these diagnoses prevent deaths, but they can also eradicate unnecessary hospital costs. After all, heart disease contributed to 31% of the $30.8 billion in potentially preventable hospital costs in 2006 (Dai W. et al.). One of the proposed solutions to providing more reliable diagnoses for heart disease is through data mining and data machines techniques, which could potentially reduce the time it takes for a diagnosis and increase the accuracy (Krishnaiah V. et al.).
+
 In this Kaggle project, we utilized various data mining techniques, such as data cleaning and building machine learning models to predict the existence of heart disease from various predictors related to heart disease. We used a training dataset, which included the target variable HeartDisease to construct models to predict the target variable diagnosis “Yes” or “No” in our testing dataset.
 
 # **Data Analysis, Cleaning & Imputation**
