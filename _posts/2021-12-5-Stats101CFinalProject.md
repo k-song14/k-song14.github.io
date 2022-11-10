@@ -52,8 +52,7 @@ length(num_test)
 The first step of our data cleaning process was turning categorical predictors of type ‘character’ into factors. To do this, we had to manipulate some of the variables so that the levels of the training and testing data set matched.  The Sex variable had a mix of “F”, “M”, “Female”, and “Male,” so we changed all the “F” into “Female” and all the “M” into “Male” in both data sets. The variable smoking_status had missing values and a level “Unknown”. Since we are assuming these NA values are missing completely at random, we changed the NA values in the variable to “Unknown”.
   
 
-```{r}
-
+```python
 
 #turn training data categorical predictors into factors
 HDtrain[sapply(HDtrain,is.character)] <- lapply(HDtrain[sapply(HDtrain,is.character)], factor)
@@ -97,7 +96,8 @@ The next step of our data cleaning process was dealing with the missing values i
 
 After perusing through the various methods included in the MICE package, we decided to try three different methods: default (logreg and polyreg), pmm (predictive means matching), and sample. We ran the imputations using each method and created new datasets with them, then compared the proportion tables for each variable to see which method came closest to our original data. We found that the sample method came closest to the original data for both ever_married and work_type, while pmm came closest to the original data for Residence_type. Thus, we decided to use the sample method in MICE to impute the training and testing data.
   
- ```{r}
+ ```python
+ 
  #Let's impute our missing values. We'll try with the default methods, pmm, and sample
 
 library(mice)
@@ -137,6 +137,7 @@ prop.table(table(HDtrainMICE.samp.data$Residence_type))
 
 HDtestMICE.samp <- mice(HDtest, m=1, method = 'sample', seed = 1128)
 HDtestMICE.samp.data <- complete(HDtestMICE.samp)
+
 ```
 
 # **Exploratory Data Analysis and Variable Selection**
@@ -147,7 +148,7 @@ First, we transformed each of our numerical variables and analyzed whether this 
 
 ![predheart1.png](/images/predheart1.png) ![predheart2.png](/images/predheart2.png) 
 	
-```{r}
+```python
 
 ##Numerical predictors
 
@@ -159,11 +160,11 @@ powerTransform(HDtrain$bmi)
 powerTransform(HDtrain$Age)
 powerTransform(HDtrain$MaxHR)
 
-
 ```
 For our numerical variables, we chose which to use by analyzing the density plots and by creating a correlation matrix. Since the response variable is binary, we analyzed the density plots to identify which numerical variables had clear differences in their distribution. Those which did have a clear difference were kept as potential significant predictors to use in our models, while those that did not have a clear difference were no longer considered for our model. 
    
-```{r}
+```python
+
 ## Correlation matrix 
 
 library(Hmisc)
@@ -185,6 +186,7 @@ grid.arrange(g1,g2,g3,g4,nrow=2)
 grid.arrange(g5,g6,g7,nrow=2)
 
 #the graphs seem to suggest that avg_glucose_level, Age, and MaxHR are good numerical predictors
+
 ```
    
 Shown below is the density plot of the bmi variable. This density plot is an example of a variable with no clear difference in distribution; so, it was not considered for our models.
@@ -200,7 +202,7 @@ From our density plots, the numerical variables that are potentially significant
 Additionally, we found correlations and p-values between all the numerical variables. If two variables have a p-value less than 0.05 then their correlation is significant and need to proceed with caution if using both variables in our model. The highest correlation coefficients with significant p-values are Age with MaxHR and avg_glucose_level with Cholesterol. Age and MaxHR had a correlation of -0.69 while avg_glucose_level and Cholesterol had a correlation of -0.78. Since these variables had the greatest significant correlation with one another we ran logistic models to see the importance of the variables. We ran a total of three different logistic models for each pairing: two of the models with each respective variable in the pair by itself and one model with the pair together. The three models using Age and MaxHR told us that, by looking at the AIC, it is a lot more beneficial to just use MaxHR. The three models using avg_glucose_level and Cholesterol told us that, by looking at the AIC, avg_glucose_level is the more beneficial of the two variables to use, but since the AIC didn’t change by much across the models, we could potentially include them together. We will keep these findings in mind when creating our final model.
  
  
- ```{r}
+ ```python
  
 summary(glm(HeartDisease~Age, family=binomial, data=HDtrain))
 summary(glm(HeartDisease~MaxHR, family=binomial, data=HDtrain))
@@ -216,7 +218,8 @@ summary(glm(HeartDisease~avg_glucose_level+Cholesterol, family=binomial, data=HD
  
 The final step in our variable selection process was to perform stepwise logistic regression on the numerical variables alone. Since our earlier analysis of our numerical predictors suggested that a transformed avg_glucose_level could be beneficial, for our numerical predictors, we decided to run two stepwise logistic regressions: one with the original avg_glucose_level predictor and one with a transformed avg_glucose_level called newglucose. For our stepwise logistic regression models, we first ran two simple logistic regression models with each glucose variable and calculated the variance inflation factor. Since the VIF for each variable was less than 5 in both models, we continued with the stepwise selection, where we used the function stepAIC with an exhaustive method. The stepwise logistic regression model with the original avg_glucose_level chose Cholesterol, MaxHR, OldPeak, and avg_glucose_level. This validates our earlier analysis that MaxHR is a good predictor and should be chosen over Age. This also validates our earlier analysis that avg_glucose_level would be a good numerical predictor and that, while removing Cholesterol did improve the AIC value, it was not improved by much, so having Cholesterol and avg_glucose_level together is not as drastic as having MaxHR and Age together. The stepwise logistic regression model with newglucose chose Cholesterol, MaxHR, Oldpeak, newglucose, and bmi.
   
- ```{r}
+ ```python
+ 
 ## Logistic Regression
 
 ##We will run a stepwise selection model with a combination of forward and backwards selection with our numerical variables to choose the best variables
@@ -251,7 +254,8 @@ testing.step.ng <- stepAIC(testing.ng, method = "exhaustive", trace=F)
 
 For each categorical variable, we first ran a Chi-Squared Test and analyzed which variables had a significant p-value. Each test was built between the HeartDisease variable and a categorical variable.
 
-```{r}
+```python
+
 ##Categorical predictors
 
 ChiSquareTest <- function(x){
@@ -298,7 +302,8 @@ After conducting the Chi-Squared Tests, we found that categorical variables with
 
 Furthermore, for each categorical variable, we plotted bar graphs separated by the binary response variable, HeartDisease, to see which variables had distinct different distributions. We found that the bar graphs indicated that stroke, ever_married, work_type, hypertension, FastingBS, and smoking_status were all significant predictors while the rest were not. Since these variables were also significant in our chi-squared test, they were chosen as the potential categorical predictors that we were to use going forward.
 
-```{r}
+```python
+
 library(ggplot2)
 c1 <- ggplot(HDtrain,aes(Sex,fill=HeartDisease))+geom_bar()
 c2 <- ggplot(HDtrain,aes(ChestPainType,fill=HeartDisease))+geom_bar()
@@ -318,6 +323,7 @@ grid.arrange(c5,c6,c7,c8, nrow=2)
 grid.arrange(c9,c10,c11,c12, nrow=2)
 
 #graphs suggest that significant predictors seem to be: stroke, ever_married, work_type, hypertension, FastingBS, smoking_status, which are all also significant in the chi-square test
+
 ```
 
 ![predheart5.png](/images/predheart5.png) ![predheart6.png](/images/predheart6.png) 
@@ -326,7 +332,7 @@ The graphs above on the top are examples of the variables we found were signific
 
 Next, we performed stepwise logistic regression on the categorical variables alone to choose our predictors. We first ran a logistic regression model with all of our categorical predictors and calculated the VIF. Since the variables ST_slope and ChestPainType had VIF values greater than 5, we decided to remove them and run a logistic regression model without them. We then used stepAIC with the exhaustive method, which ended up choosing Sex, FastingBS, RestingECG, ExerciseAngina, ever_married, work_type, Residence_type, and stroke This validates our earlier analysis with the chi-square test and bar graphs that stroke, ever_married, work_type, and FastingBS could be good categorical predictors.
 	
-```{r}
+```python
 
 ##We will run a stepwise selection model with a combination of forward and backwards selection with our categorical variables to choose the best variables
 
@@ -362,9 +368,9 @@ We decided to test a Random Forest model since it is an ensemble classifier, one
 
 We used three different Random Forest models: one with all 19 predictors, one with the best 15 predictors, and one with the best 10 predictors. For each of these models, we found the respective mtry value that would produce the lowest misclassification rate.
 
-```{r}
+```python
+
 ## Random Forest
-```{r}
 
 library(ggplot2)
 library(randomForest)
@@ -417,7 +423,8 @@ misclass.icu.rf #misclassification rate of 0.2014218
 
 For the full Random Forest model, the best mtry value was 5 so we ran our model with that value. We obtained a misclassification rate of approximately 19.83%. Next, we simplified our model by removing the four worst predictors based on importance. This new 15 predictor model did not include Residence_type, stroke, RestingECG, and work_type. We used a mtry value of 4 since this was the value that created the lowest misclassification rate for this respective model. The misclassification rate was approximately 19.74%, only marginally better than the full model. Finally, we removed the worst five predictors from this model to create our final, 10 predictor model. This model did not have bmi, smoking_status, Sex, ChestPainType, and hypertension. Using a mtry value of 6, the misclassification rate was approximately 21.09% which was the worst of the three models. 
   
-```{r}
+```python
+
 #removing the worst 4 for the next model to make model of 15
 #worst 4: stroke, residence_type, work_type, and restingECG
 
@@ -444,6 +451,7 @@ conf.matrix.rf.10 <- table(pred.rf.10, HDtrainMICE.samp.data[-train,]$HeartDisea
 misclass.icu.rf.10 <- (conf.matrix.rf.10[2,1]+conf.matrix.rf.10[1,2])/sum(conf.matrix.rf.10)
 conf.matrix.rf.10
 misclass.icu.rf.10 #missclassification rate of 0.2101106
+
 ```
 
 Compared to our logistic regression with stepwise selection, none of our Random Forest models performed as well. All three models had a higher misclassification error rate. Furthermore, a Random Forest model is rather complex despite our efforts to simplify it and it is much harder to interpret compared to a logistic regression model. Other limitations include the tendency to overfit as well as its bias towards categorical variables with a higher number of levels.
@@ -451,7 +459,7 @@ Compared to our logistic regression with stepwise selection, none of our Random 
 ## Logistic Regression with Stepwise Selection
 For our final model, we decided to run another stepwise logistic regression model, but this time with the categorical and numerical variables selected by the previous stepwise logistic regression models. We ran two models: one with the avg_glucose_level and one with newglucose and their corresponding chosen variables. To decide whether we would use the model with newglucose or avg_glucose_level, we calculated the training misclassification rates of both models and found that the model with avg_glucose_level had a lower misclassification rate (0.1893365 vs  0.1933649). Thus, we decided to use the model with avg_glucose_level and its corresponding chosen variables.
 
-```{r}
+```python
 
 ###stepAIC with categorical and numerical variables selected by previous stepAIC models; we will use both the transformed avg_glucose_level (newglucose) and the original avg_glucose_level and their corresponding variables chosen by stepAIC
 
@@ -473,10 +481,11 @@ table(predicted.HD2,HDtrainMICE.samp.data$HeartDisease)
 
 In the end, we decided to choose this as our final model, as it was the simplest model with the smallest training misclassification rate. It scored 0.80869 on Kaggle, which is our best score.
 
-```{r}
+```python
+
 ###Final Model Selection
 **We chose the model that had both the smallest misclassification rate and was the simplest: our stepAIC (stepwise selection using forward and backwards selection) model with logistic regression using the original avg_glucose_level and other variables chosen by stepAIC**
-```{r}
+
 pred.prob10 = predict(testing3.step,type="response",data=HDtrainMICE.samp.data, newdata = HDtestMICE.samp.data)
 
 D.glm.pred10=rep("No",dim(HDtestMICE.samp.data)[1])
