@@ -22,7 +22,6 @@ In this Kaggle project, we utilized various data mining techniques, such as data
    We were provided with two data sets to conduct our analysis, one for testing and one for training. The training data set contained seven numerical variables and thirteen categorical, one of the categorical variables was our response variable HeartDisease. The testing data set contained the same seven numerical variables and twelve categorical variables because it excluded the response variable. The numerical variables included Age, RestingBP, Cholesterol,  MaxHR, Oldpeak, avg_glucose_level, and bmi, while the categorical variables included Sex, ChestPainType, FastingBS, RestingECG, ExerciseAngina, ST_slope, hypertension, ever_married, work_type, Residence_type, smoking_status, stroke, and HeartDisease. Furthermore, the training data set had 4220 observations and the testing had 1808 observations.  
    
    
-###Analyzing/Cleaning Data
 ```{r}
 
 library(readr)
@@ -45,7 +44,7 @@ length(num_test)
 
 #7 numerical variables in both training and testing data; thus, there are 13 categorical variables in both the training and testing data 
 
-
+```
    
 ## Data Cleaning
   The first step of our data cleaning process was turning categorical predictors of type ‘character’ into factors. To do this, we had to manipulate some of the variables so that the levels of the training and testing data set matched.  The Sex variable had a mix of “F”, “M”, “Female”, and “Male,” so we changed all the “F” into “Female” and all the “M” into “Male” in both data sets. The variable smoking_status had missing values and a level “Unknown”. Since we are assuming these NA values are missing completely at random, we changed the NA values in the variable to “Unknown”.
