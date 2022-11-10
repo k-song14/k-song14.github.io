@@ -144,6 +144,8 @@ We analyzed the variables provided to us using exploratory data analysis to bett
 
 ## Variable Selection/EDA: Numerical Variables
 First, we transformed each of our numerical variables and analyzed whether this transformation was beneficial. After examining a boxplot of all our numerical variables and whether the transformation helped the distribution, we found that only transformation was beneficial to the variable: the inverse of avg_glucose_level. Below are the boxplots of the variable before and after it was transformed to show that the transformation.
+
+![predheart1.png](/images/predheart1.png) ![predheart2.png](/images/predheart2.png) 
 	
 ```{r}
 
@@ -187,7 +189,11 @@ grid.arrange(g5,g6,g7,nrow=2)
    
 Shown below is the density plot of the bmi variable. This density plot is an example of a variable with no clear difference in distribution; so, it was not considered for our models.
 
+![predheart3.png](/images/predheart3.png) 
+
 Shown below is the density plot of the max heart rate (MaxHR) variable. This density plot is an example of a variable with a clear difference in distribution; so, it was considered for our models.
+
+![predheart4.png](/images/predheart4.png) 
 
 From our density plots, the numerical variables that are potentially significant are Age, MaxHR, Oldpeak, avg_glucose_level, and Cholesterol. 
 
@@ -314,6 +320,8 @@ grid.arrange(c9,c10,c11,c12, nrow=2)
 #graphs suggest that significant predictors seem to be: stroke, ever_married, work_type, hypertension, FastingBS, smoking_status, which are all also significant in the chi-square test
 ```
 
+![predheart5.png](/images/predheart5.png) ![predheart6.png](/images/predheart6.png) 
+
 The graphs above on the left are examples of the variables we found were significant predictors while the graphs on the right were examples of variables we deemed as poor predictors of the HeartDisease variable. 
 
 Next, we performed stepwise logistic regression on the categorical variables alone to choose our predictors. We first ran a logistic regression model with all of our categorical predictors and calculated the VIF. Since the variables ST_slope and ChestPainType had VIF values greater than 5, we decided to remove them and run a logistic regression model without them. We then used stepAIC with the exhaustive method, which ended up choosing Sex, FastingBS, RestingECG, ExerciseAngina, ever_married, work_type, Residence_type, and stroke This validates our earlier analysis with the chi-square test and bar graphs that stroke, ever_married, work_type, and FastingBS could be good categorical predictors.
@@ -343,6 +351,8 @@ vif(testing2.step)
 ## Logistic Regression
 One method we tried was simply a logistic regression using strictly numerical predictors: RestingBP, Cholesterol, MaxHR, avg_glucose_level, and bmi.
 This model did not violate any of the assumptions of logistic regression. For example, the VIF was below 5 for the predictors, thus, not violating the multicollinearity assumption. Furthermore, the data is relatively normal, this can be seen in the Q-Q plot. Then, the Residuals VS Leverage plot also shows that there are no observations outside Cook's Distance. 
+
+![predheart7.png](/images/predheart7.png) ![predheart8.png](/images/predheart8.png) 
 
 While the predictors in this model were statistically significant and produced a Kaggle Score of 0.8015, this is a very rudimentary model. Thus, we decided to delve deeper into the data to find one that better fit. 
   
@@ -402,6 +412,8 @@ conf.matrix.rf
 misclass.icu.rf #misclassification rate of 0.2014218
 
 ```
+
+![predheart9.png](/images/predheart9.png) 
 
 For the full Random Forest model, the best mtry value was 5 so we ran our model with that value. We obtained a misclassification rate of approximately 19.83%. Next, we simplified our model by removing the four worst predictors based on importance. This new 15 predictor model did not include Residence_type, stroke, RestingECG, and work_type. We used a mtry value of 4 since this was the value that created the lowest misclassification rate for this respective model. The misclassification rate was approximately 19.74%, only marginally better than the full model. Finally, we removed the worst five predictors from this model to create our final, 10 predictor model. This model did not have bmi, smoking_status, Sex, ChestPainType, and hypertension. Using a mtry value of 6, the misclassification rate was approximately 21.09% which was the worst of the three models. 
   
