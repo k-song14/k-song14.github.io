@@ -9,12 +9,9 @@ author: Kelly Song
 
 Hi everyone! Here are the links to some recent projects I've worked on in my Digital Humanities Courses:
 
-## The Hidden Data Behind Netflix
-https://n3tf7ix.humspace.ucla.edu/
+<a href="https://n3tf7ix.humspace.ucla.edu/">## The Hidden Data Behind Netflix</a>
 
-## Elon Musk's Twitter Takeover
-https://twittertakeoverproj.humspace.ucla.edu 
+<a href="https://twittertakeoverproj.humspace.ucla.edu">## Elon Musk's Twitter Takeover</a>
 
-## Los Angeles Social Vulnerability Index
-https://storymaps.arcgis.com/stories/1085a8b5ae8843319cfd8595050438bc
+<a href="https://storymaps.arcgis.com/stories/1085a8b5ae8843319cfd8595050438bc">## Los Angeles Social Vulnerability Index</a>
 
