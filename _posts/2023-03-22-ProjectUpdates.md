@@ -4,12 +4,12 @@ layout: post
 author: Kelly Song
 ---
 
-# Recent Projects
+## Recent Projects
 
 
 Hi everyone! Here are the links to some recent projects I've worked on:
 
-## Digital Humanities Projects
+### Digital Humanities Projects
 
 <a href="https://n3tf7ix.humspace.ucla.edu/">The Hidden Data Behind Netflix</a>
 
@@ -18,6 +18,6 @@ Hi everyone! Here are the links to some recent projects I've worked on:
 <a href="https://storymaps.arcgis.com/stories/1085a8b5ae8843319cfd8595050438bc">Los Angeles Social Vulnerability Index</a>
 
 
-## Sharpe Fellows Data Dashboard
+### Sharpe Fellows Data Dashboard
 
 <div class='tableauPlaceholder' id='viz1684267899283' style='position: relative'><noscript><a href='#'><img alt='Sharpe ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;SH&#47;SHARPEFELLOWSDATADASHBOARD&#47;Sharpe&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='SHARPEFELLOWSDATADASHBOARD&#47;Sharpe' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;SH&#47;SHARPEFELLOWSDATADASHBOARD&#47;Sharpe&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>          
