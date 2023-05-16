@@ -7,7 +7,9 @@ author: Kelly Song
 # Recent Projects
 
 
-Hi everyone! Here are the links to some recent projects I've worked on in my Digital Humanities Courses:
+Hi everyone! Here are the links to some recent projects I've worked on:
+
+## Digital Humanities Projects
 
 <a href="https://n3tf7ix.humspace.ucla.edu/">The Hidden Data Behind Netflix</a>
 
