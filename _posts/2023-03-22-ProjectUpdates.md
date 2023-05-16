@@ -17,7 +17,6 @@ Hi everyone! Here are the links to some recent projects I've worked on:
 
 <a href="https://storymaps.arcgis.com/stories/1085a8b5ae8843319cfd8595050438bc">Los Angeles Social Vulnerability Index</a>
 
+## Other
 
-## Sharpe Fellows Data Dashboard
-
-<iframe src="https://public.tableau.com/views/SHARPEFELLOWSDATADASHBOARD/Sharpe?:language=en-US&:display_count=n&:origin=viz_share_link" title="W3Schools Free Online Web Tutorials"></iframe>     
+<a href="https://public.tableau.com/views/SHARPEFELLOWSDATADASHBOARD/Sharpe?:language=en-US&:display_count=n&:origin=viz_share_link">Sharpe Fellows Data Dashboard</a>
