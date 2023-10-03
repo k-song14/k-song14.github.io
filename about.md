@@ -102,7 +102,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p>Dependable, motivated, and diligent Statistics & Data Science undergraduate student with extensive experience in leadership and collaboration. Aspiring to pursue a career in data analytics and/or data science. Currently looking for jobs involving data analytics or data science.</p>
         </div>
       </div>
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>Experience</h3>
+        <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://externalaffairs.ucla.edu"><b>UCLA External Affairs</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2023 - Jun 2023</h7>
           <p>
@@ -112,8 +114,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
         </div>    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>Experience</h3>
         <div class="w3-container">
           <h5 class="w3-opacity"><b>UCLA Fielding School of Public Health</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2023 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
