@@ -102,7 +102,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p>Dependable, motivated, and diligent Statistics & Data Science undergraduate student with extensive experience in leadership and collaboration. Aspiring to pursue a career in data analytics and/or data science. Currently looking for jobs involving data analytics or data science.</p>
         </div>
       </div>
-        <div class="w3-container">
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h5 class="w3-opacity"><a href="https://externalaffairs.ucla.edu"><b>UCLA External Affairs</b></a></h5>
           <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2023 - Jun 2023</h7>
           <p>
