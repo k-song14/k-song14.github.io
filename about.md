@@ -99,40 +99,38 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
        <div class="w3-container w3-card w3-white">
         <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>About</h3>
         <div class="w3-container">
-          <p>Dependable, motivated, and diligent Statistics undergraduate student with extensive experience in leadership and collaboration. Aspiring to pursue a career in data analytics and/or data science. Currently looking for jobs in data analytics or data science.</p>
+          <p>Dependable, motivated, and diligent Statistics & Data Science undergraduate student with extensive experience in leadership and collaboration. Aspiring to pursue a career in data analytics and/or data science. Currently looking for jobs involving data analytics or data science.</p>
         </div>
       </div>
-    
+        <div class="w3-container">
+          <h5 class="w3-opacity"><a href="https://externalaffairs.ucla.edu"><b>UCLA External Affairs</b></a></h5>
+          <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2023 - Jun 2023</h7>
+          <p>
+            <li>Conducted regular updates and maintained accuracy of UCLA Alumni database by utilizing CRM and external data sources</li>
+            <li>Developed insightful data dashboards using Tableau to effectively communicate findings and analysis to stakeholders</li>
+            <li>Employed data engineering techniques using Python to manipulate, analyze, and revise UCLA alumni data</li>
+          </p>
+          <hr>
+        </div>    
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h3 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-deep-purple"></i>Organizations</h3>
         <div class="w3-container">
-          <h5 class="w3-opacity"><a href="https://ucghi.universityofcalifornia.edu/centers-of-expertise/womens-health-gender-and-empowerment/coe-student-ambassadors"><b>University of California, Global Health Institute</b></a></h5>
-          <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2021 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
+          <h5 class="w3-opacity"><b>UCLA Fielding School of Public Health</b></a></h5>
+          <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2023 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
           <p>
-            <li>Led initiative to expand Student Ambassador program by developing 10+ Student Assistant and committee positions </li>
-            <li>Oversaw administrative program support and student-led committees of 70+ ambassadors </li>
-            <li>Constructed and analyzed database of ~150 student ambassadors to devise a demographic summary report</li>
-            <li>Presented summary report to the UCGHI board to develop new strategies to improve the recruitment process</li>
+            <li>Leveraged email campaigns and social media marketing to successfully recruit 100+ survey participants to assess the quality, satisfaction, and accessibility of UCLA’s Ashe Women’s Health Clinic</li>
+            <li>Processed and created a comprehensive data dashboard to visualize patient demographic data using Python and Tableau</li>
+            <li>Employed Natural Language Processing tools to generate word clouds and perform sentiment analysis on identity-based focus group discussion transcriptions</li>
           </p>
           <hr>
         </div>
         <div class="w3-container">
           <h5 class="w3-opacity"><a href="https://www.ansirh.org/research/ongoing/california-home-abortion-telehealth-chat-study"><b>California Home Abortion by Telehealth (CHAT) Study</b></a></h5>
-          <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2022 - September 2022</h7>
+                    <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2022 - Sep 2022</h7>
           <p>
             <li>Utilized Python to recode and analyze demographic variables of over 17,000 participants, contributing towards a nationwide telehealth abortion study</li>
             <li>Engineered and implemented equations in RedCap for variable recoding to clean data for further analysis</li>
-            <li>Researched peer-reviewed sources to draft a literature review gauging the safety and efficacy of period tracking apps</li>
-          </p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><a href="https://pilotucla.wixsite.com/pilot"><b>Public Health Initiative: Leaders of Tomorrow (PILOT) at UCLA</b></a></h5>
-          <h7 class="w3-text-deep-purple"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Oct 2020 - <span class="w3-tag w3-deep-purple w3-round">Current</span></h7>
-          <p>
-            <li>Recruited and ensured consistent involvement of 100+ undergraduate and graduate PILOT members</li>
-            <li>Managed and delegated tasks to the executive board and committees of 30+ members </li>
-            <li>Planned bi-weekly events (panels, workshops, networking, etc.) for education and professional development</li>
+            <li>Leveraged communication skills to explain technical concepts and data insights to non-technical team members, ensuring a clear understanding of results</li>
           </p><br>
         </div>
       </div>
