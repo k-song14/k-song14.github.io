@@ -6,7 +6,7 @@
 name: Kelly Song
 
 # Short bio or description (displayed in the header)
-description: UCLA Student
+description: UCLA Researcher
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/k-song14/k-song14.github.io/master/images/avatar-2.png
@@ -22,7 +22,7 @@ footer-links:
   facebook:
   flickr:
   github: k-song14/k-song14.github.io # replace with your repo
-  instagram: kelly_song
+  instagram:
   linkedin: kelly-song-a175b71b6
   pinterest:
   rss: # just type anything here for a working RSS icon
